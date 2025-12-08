@@ -1,7 +1,7 @@
 """Wallet verification request DTO."""
 from __future__ import annotations
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class WalletQueryDTO(BaseModel):
@@ -9,10 +9,11 @@ class WalletQueryDTO(BaseModel):
 
     address: str = Field(..., min_length=4, description="Dirección de la wallet a evaluar")
 
-    class Config:
-        anystr_strip_whitespace = True
-        json_schema_extra = {
+    model_config = ConfigDict(
+        str_strip_whitespace=True,
+        json_schema_extra={
             "example": {
                 "address": "0x47ce0c6ac56edb84e2ad330bec0b500ad6e71bee",
             }
-        }
+        },
+    )

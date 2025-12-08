@@ -5,7 +5,8 @@ from functools import lru_cache
 from pathlib import Path
 from typing import Dict
 
-from pydantic import BaseSettings, Field, validator
+from pydantic import Field, field_validator
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
@@ -27,28 +28,34 @@ class Settings(BaseSettings):
         }
     )
 
-    class Config:
-        env_file = ".env"
-        env_file_encoding = "utf-8"
-        case_sensitive = False
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        case_sensitive=False,
+    )
 
-    @validator("api_prefix")
+    @field_validator("api_prefix")
+    @classmethod
     def validate_api_prefix(cls, value: str) -> str:
         if not value.startswith("/"):
             return f"/{value}"
         return value.rstrip("/") or "/"
 
-    @validator("log_level")
+    @field_validator("log_level")
+    @classmethod
     def validate_log_level(cls, value: str) -> str:
         return value.upper()
 
-    @validator("dataset_path")
-    def validate_dataset_path(cls, value: Path) -> Path:
-        return value.expanduser()
+    @field_validator("dataset_path", mode="before")
+    @classmethod
+    def validate_dataset_path(cls, value: Path | str) -> Path:
+        if isinstance(value, Path):
+            return value.expanduser()
+        return Path(value).expanduser()
 
 
 @lru_cache(maxsize=1)
 def get_settings() -> Settings:
     """Return cached application settings."""
 
-    return Settings()  # type: ignore[arg-type]
+    return Settings()
