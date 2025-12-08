@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from app.config.logger import configure_logging
 from app.config.settings import get_settings
@@ -23,9 +24,22 @@ def create_app() -> FastAPI:
 
     # Middlewares
     app.add_middleware(LoggingMiddleware)
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=False,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
     # Routers
     app.include_router(wallet_router, prefix=settings.api_prefix)
+
+    @app.get("/", tags=["Health"])
+    def healthcheck() -> dict[str, str]:
+        """Return a basic readiness check."""
+
+        return {"status": "ok", "message": "Crypturity API running"}
 
     return app
 
