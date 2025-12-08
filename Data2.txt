@@ -1,0 +1,5146 @@
+
+
+{
+  "description": "Conjunto de datos de direcciones de alto riesgo consolidadas para propósitos de simulación AML/KYC. Incluye datos de Sanciones (OFAC), Riesgo (TRM Labs) y Abuso Comunitario (Chainabuse).",
+  "version": "1.0",
+  "date_generated": "2025-12-07T09:53:51Z",
+  
+  "risk_categories": {
+    "CRÍTICO": "Coincidencia con reportes verificados de hackeo/explotación.",
+    "ALTO": "Coincidencia con sanciones gubernamentales (OFAC), puntuación de riesgo TRM > 0.90, o dominios con múltiples reportes de fraude/scam.",
+    "MEDIO": "Puntuación de riesgo TRM entre 0.40 y 0.90, o wallets/dominios con reportes de estafa menos graves.",
+    "BAJO": "Puntuación de riesgo TRM < 0.40, o sin coincidencias."
+  },
+
+  "data_sources": {
+    
+    "ofac_sanctions": {
+      "source": "Simulación de listas de Sanciones de la Oficina de Control de Activos Extranjeros (OFAC)",
+      "type": "Coincidencia Exacta (CRÍTICO/ALTO)",
+      "addresses": {
+        "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa": "ALTO - Lazarus Group (BTC)",
+        "0x47ce0c6ac56edb84e2ad330bec0b500ad6e71bee": "ALTO - Tornado Cash (ETH)"
+      }
+    },
+    
+    "trm_risk_scores": {
+      "source": "Simulación de Puntuaciones de Riesgo de TRM Labs (0.0 a 1.0)",
+      "type": "Puntuación de Riesgo (Dinámico)",
+      "scores": {
+        "1F1tAaz5x1e8tPzpt1UT3QG1fVqPjK": 0.95,
+        "3KMqKqQzB3R2GjT3Fz5wJ2D2E4x5wT": 0.40,
+        "0xCleanWalletAddressHere": 0.05
+      }
+    },
+    
+    "chainabuse_reports": {
+      "source": "Reportes Comunitarios Verificados de Chainabuse",
+      "type": "Base de Datos de Riesgo CRÍTICO/ALTO",
+      
+      "reported_domains": [
+        {
+          "domain": "goldpayer.com",
+          "risk": "ALTO",
+          "motives": ["17 reportes (PIG_BUTCHERING/RUG_PULL)"]
+        },
+        {
+          "domain": "fiverr.com",
+          "risk": "MEDIO",
+          "motives": ["5 reportes (FAKE_PROJECT)"]
+        }
+      ],
+      
+      "individual_addresses_risk": {
+        "19AtrEvJv7UY75tvWkXMxLUAYibxpZhFfN": "ALTO - Ligada a PIG_BUTCHERING (BTC)",
+        "1dn1GLbcgXAP1EWhzchu4urow2zqfAgni": "MEDIO - Ligada a FAKE_PROJECT (BTC)"
+      },
+
+      "full_hack_reports": [
+        {
+          "id": "b181be45-51a7-446b-83ae-8408c9103bb5",
+          "createdAt": "2023-06-03T19:36:05.409Z",
+          "trusted": true,
+          "scamCategory": "OTHER_HACK",
+          "risk_level": "CRÍTICO",
+          "affected_wallets": [
+            "1JsmGTTehNira5C2tzT2TpjCAaZKGmVFQW", 
+            "1FXDkdVwTqCLgXPsGuQrBfPaRTPPhufhzX",
+            "TU6ccVP3EbA5KF9APuLsf3ThDMu76dQfrs", 
+            "14CU6mixzA3eE3Uasy8Dprr3GKUntfgQ64",
+            "1KYAEayfw9nE44K32dUmQEJ7mc2Up5jSzQ",
+            "1Jd6JgMX1wfW9s4wqFXfT4y6wjHpCrNNZ7",
+            "1Pu3Yq7ZaT18XHUhBnDyJqEPTdzKw8rJMA",
+            "19cCWHyjhvE7Fkd87mfF6CsHLGbJdbwwSg",
+            "TV92VkrHpim1MN58GNC5RfUWVUmNTPRwGA",
+            "TFwVU9mJKiqTSvVbTDK226VsB1CS25uPN6",
+            "TR3ooNiKx8KF5mAxYAMe7CwWBZhqiTar1G",
+            "1C3QTwg8wKFXVSPpNHrL92GcFLCFKztiWg",
+            "16LvBSwHdJLto18r9m56fTizBvG7Q9p9Pu",
+            "1D4HQSUy1MG1riddiqu7RvLuwf8mzMHPWZ",
+            "13j5vxNpwfa2YQVQtnX8oRDUKgs7xMAs1g",
+            "1F4A7yeD5Kyqaz16ogTnfQKYD7MbmFRZq7",
+            "TNN2mb2oYAqp6gguJWEwtxvg6CrMEw7V46",
+            "TEaggqLb9bxp88FraLtYLZXCmkTd523ZSP",
+            "1MKKBJ7XunjuHtpWo8TxKeJTGLeaXPXc7f",
+            "TTRuBJvTWptnbtiiy3TopJQE6dmhRedjAK",
+            "1QLPd2DBjzHWRmhZVeq9gJUaGxfokHe9T9",
+            "1CkppiAHpjE1JL8pQLct9aFuoxVihhRjYF",
+            "1JcsRtTjNqfmussqCdeWq2kN1c8N2Xheyx",
+            "16t5XEUgFRAeW1iCQGdQL6AUMWcQExQczH",
+            "TBvNW6DXQjgBf8w7Ccp54CfcbrK8MhAxQe",
+            "19icvx5tiNgpaPaxkRJjYCMSoV92VPpyVN",
+            "TBiD9DYqfNXdDSnAqpqywspSVhW9xH6drB",
+            "TVRff76cjip8NWh8WyN8RHnaEZqx6VLFNu",
+            "0x4fd4f171ec70c3fdb981f3de71c1db3c5632306e",
+            "0x84dcd9d540e1684135c662f1460b5f63bcf69784",
+            "0x1b2679bed806748df7e92783d6c05d6dcd8e9f02",
+            "0x8aef6010a3cbf3c81408ef3d72b728e26f237973",
+            "0xfc2014d6721852cd7d4dbd814e2f52ade400e3bf",
+            "0x60e35081f059e41cb90d9426947f995b8ae89b02",
+            "0xa53fc2ff291d641595328e2b46e03b37ba570046",
+            "0x7e1959f43924822169cb40d1b10af454e1f92004",
+            "0xfc9b51b5b41bf1b1cedb85d813d1bf4125f9c468",
+            "0x130036b0cb08f193800c7d87d172a643f136d553",
+            "0x60f211bafb7df705340ad522653227eeabdaa8b3",
+            "0x9f14c7cd496e54aa65937ce8059bad5158ca8640",
+            "0xe9db11fb2656b43455072cd2849d5475e733bd1a",
+            "0xc8ba4b2bdfe70eb1af709e38cbb988dc6164f85d",
+            "0xe5cc0995ddd52ea7ea4c4a2447282bc48fe9c7ac",
+            "0x5ed6b4f8836b63d76d527987e1011bd8ea8f67c1",
+            "0x4b8d36c878b549ae28fe72d0a6fb3692473c5072",
+            "0x8894e0c56b7859b66befa09c49296b0435e8ad4f",
+            "0x856d7698191f2af5213c044be990df651a821795",
+            "0xef59a072f4b8c979e24af2c5dc941b1c60e388bc",
+            "0xc2e6ee8a3fcd6c021a1f9c30f00c81c9e625aeef",
+            "0x2b2403991fcb537fa6513d60e58eef0192fdc321",
+            "0xb73c3871f4e5504e22c8c5fcbb50dadbd86f315e",
+            "0xee5c424853e058c0a03247e09b7be924f1ea1dd2",
+            "0x491375e55c409cfaf48d65f17ae8276790ab1cdc",
+            "0xdb6a1b822c6c57ed6ce056d900fe35a1051a74f9",
+            "0x893ab353946fcafdb122d9255e0b34ddceeab3da",
+            "0xec106dfcfe27e33d77c2bcea702be4b810af19aa",
+            "0x10bca015155210067d15c43af01e774982c27812",
+            "0x0d98f8bde5d5b79082a57b554bfc41f6855e9e17",
+            "0xc6489070292b6ea956b4d40355b0a72518045045",
+            "0x0d770e4255456602cc9ef053fb7ecceda1cb51ea",
+            "0x98412c294dc3f62043a6bb777d60da36485ea1c9",
+            "0x454b76d7b7d54ab8c7e8c38f03fa77a7c65eb09c",
+            "0xffc4c70567b8023d3d4650357c10886f126ab5ba",
+            "0xa3e3a4a61423a06d2f92e5fe93968680ab551fc9",
+            "0xc1d799e340e7833d4104b1573b3794238b6e1cda",
+            "0x67fafd1dd55381933e5c4caa58f428cee4d3624f",
+            "0xf0e38062587058106e18fe2df99cc72bfa3a925a",
+            "0xdfd1447b9b54f7427797374d69a6632b5693936d",
+            "0x0ffc03aeda3869304295abadb2bcccc16629689d",
+            "0x9fea8914995cc696ed8ce4136051dda036f5019e",
+            "0xa11bfc6c862f12bd06986262f9d839df72ae7736",
+            "0xddb021cd75b5d710e643d1632dee8c3238e56ef3",
+            "0x4bf7add666aa9f9b546d6e56e63e24a48751cfe7",
+            "0x49ce2cf6888a9fd4f65aa0f41b120ef279b680fb",
+            "0xcb241977f2708ebe669e5922a5b4d1a7640bc69a",
+            "0x015951b0f60cd1e866843267d08ded641ab27b70",
+            "0x4fcb65a0d7ba2e8135986b07c7cf8132c2aa6dee",
+            "0x8cc49d12b514ebcb5b5ae6fe8b4e7e7ca389ec9f",
+            "0x8a689773e912f70b623ef2861d810f6d34849cb4",
+            "0x74015fc84feb9c5e6e234a243e796a93b64a538c",
+            "0x8c530f0ffb3a4faf4a7c9cae1e0a065c33dabf8d",
+            "0xe07875c46cd56ae42f1b7325a4563f05bc2af50c",
+            "0x527bab27bea51ac26ca30d97d34007f69db45022",
+            "0x22caae637391afd709970ef987089d0105f98d07",
+            "0x19839370bd5a1b5d1195fb3e7fec389b7c83a5c8",
+            "0x5e99dcb3dcfa75cc3187bb33b9f34f451e7de07c",
+            "0x4e22d70e3f192c1e86a0c8d7c2617ca3d98720f4",
+            "0x84df40ce2bd6535b2fd2102636310399d3576639",
+            "0x3e919212f051c274061c5e54eb8d938aa78049ed",
+            "0x3daaabee7af83b1b6d1f65755ec535b4ba9df852",
+            "0xf49f960e516a0ddf91b8ed051c2721e3edc6e322",
+            "0x488d408c6bba6c6831d1f947b739110962d4bf40",
+            "0xd2e71e8fa25d731f0d9c6216b0a408d06939e44f",
+            "0x7b64509d20bab1ba0bc48f4fc19c4ef4e3d654f2",
+            "0x495dcabf90c626b2d03438fe864903306258b125",
+            "0x53a1119c2ff758df84ae123a6b8ab43910b37eab",
+            "0xfc3a554f00f80ac11d41e8d899aec4a280a14f4c",
+            "0x0d52d7e9ee2a3fccd3d46f287a9da375c3521bb0",
+            "0x87f12a45cc387125af788c931d8e4464539261f4",
+            "0x5b04c817419866f3f046b30bbf9ebbe0ffed44a9",
+            "0xe49b000dae6bc6d928a21aaff41910e7828fa9b9",
+            "0x3cec5173fe60c0635c9ebcb0f73203980645ee6b",
+            "0x59d445c091801efbe9e17a383de09b61c7b80590",
+            "0x7c41798a753b11add0cd32616324eb61cfce26fa",
+            "0x1c4a4febf86afba429ce265f35a0a9e73d109751",
+            "0xf33f5ce662c0c70edb1bc96de42302ec8c112a8d",
+            "0xdb20c8043a67c218b42260e0cd2b82c4e5e7ffcd",
+            "0xf487482e8993da7fd384a7b355a75603d71c413a",
+            "0x9b56fa09df619a0e2d376b896c3101034cf102fe",
+            "0x14a270f4aa4a2f8d3946477a4f62203fde89893f",
+            "0x79fff3daf3b1abd629194c7573919335ac8c87f4",
+            "0x66c86e9edcead00e36bf1336a4848dd2b8ec3245",
+            "0x1314eb3e8264fe2c249083f84f4dbf537ec4e55f",
+            "0xf677e6d342ce85b7102e95d5bb9ad457a275dba6",
+            "0x2a6da57723cf3db9adf953bd68832b6c5368956e",
+            "0xb2c9c4dd6561e6a3d976bf9bd01206af933f52b8",
+            "0x22e5acae013e38f4425615e340bfdb86a0f62681",
+            "IA2ED2EPL2C5M7Q5NCZM6LJHVDT5OYEHIHCQGL22HGHHGLP5HS4GKSSDJ4",
+            "addr1qyg0w0ucn6nfvj8hhzp8wjk46c38d28j78vd5vqtwqftxnffamsp0rhnc4t5nyp9mamwh9ssh8930qq6n64eta6fu92sdsp5mq"
+          ]
+        },
+        {
+          "id": "0ea24e3c-0b02-46f4-bb5d-5196700f0149",
+          "createdAt": "2024-12-17T00:51:19.984Z",
+          "trusted": true,
+          "scamCategory": "OTHER_HACK",
+          "risk_level": "CRÍTICO",
+          "affected_wallets": [
+            "bc1q0ef2s9lv5zgnfsfscwdxmrxwupn9hl3twz98r6",
+            "bc1q28agned9hpj9uvdv9y3fsy7jew2l2xf4zl656j",
+            "bc1q2ga6xzuwfnatlgu2v0nwj8e4qkd6d87q65mpc6",
+            "0x75bbc04fa183dd0ac75857a0400f93f766748f01",
+            "0xfb7ed59be933b145055b94aed31095827946daed",
+            "0xe897acd00b8177e3e4efaebd605ba72edbb09560",
+            "0xa790ea6671eaee2a35127ea4953d8ea5614ddeeb",
+            "0x261296d3b7955c292b4eaedf2509a0d7e32b7d40",
+            "0x46b1ca6ac6e7b07ef62e270902633b3b0a22023d",
+            "0xd138a3ca5e55a6d32282f1c9e5e343b6dfd83150",
+            "0xca911976d116dee11b64b4e5d1dc3708ca917c70",
+            "0x3c02feafa7b50ec5f8841994b168665528b41393",
+            "0x92fc4c29c74d55b50cb52d2142f2a363163a57f5",
+            "0xe0354f20806b37d5f10268728daca4d5e5dfdef3",
+            "0x62efc403c51ddc65f4453165db1b961886a5f0af",
+            "0xe15e345a287468aa087d94860719b46c1e1f8313",
+            "0x2e420d71313fb67f81e49572ced7b3e4aa134bde",
+            "0x65d9026a48ac55658fd408b339a6800a39998e20",
+            "0x4efa56fa135bdd633d074684deb95d29502f4b40",
+            "0xc3d6d5893c802a93c2f1a0ee14e674da006f7f24",
+            "0xb51270ac4848a4ecef979cb8363654a1106d6eb1",
+            "0xc196a45468c9b28689c3b7b94d20c4fd6c031136",
+            "0xb60d90c1accd9632a22472834e9247103fbb5e30",
+            "0x3bcb30169fc7b5812de328ac0662a69831aaa5fc",
+            "bc1qs87ndpzrqkjucc4sujygku8qtrsp62c2njqjjv",
+            "0x1b66b193353e0dfbe74762e2889906d48c7efa5b",
+            "0xe43afcf87229b95a1b4890c28067086efc043dee",
+            "0xc4a088de3c25a8350c6518c3c19b69c619c3a860",
+            "0x393414e439edb1c9f27042b9ea933ef3f6c6be8e",
+            "0x57adc081aa85e8bd22dcab2bfd03fa9691368e6a",
+            "0x17049a7fe643113666fa2e2a25ef3496b82a1521",
+            "0x3b2bddd01590591fe5820b2580f0533550749180",
+            "0x09ecd320f6fa6f5fab1bca48577b790ba2ce2a8e",
+            "0xd5b563139a11495e90117c222db28f1e042604e7",
+            "0x7cc818422e795c98f0710ae63cee1881f85541b9",
+            "0xc157e3a98ec0c16695911bc216760d92f3be5762",
+            "0xebba793138e18a98f874cdee1c4d48ad9276e0b9",
+            "0xe74de3c80083bee2b1ccc3f9bdecdf2fe2dca0ac",
+            "0x6c482c0ca416f708cc00bab3497f8b6e7e9fe3eb",
+            "0x8cbffae5d13f30d69a24a3763d9a2f2219860237",
+            "0x65c5778b113168df42aafb748a670e8b0ecd07bc",
+            "0xa9dd135c99eed14a51ffb51e2d6f858fe272cc1a",
+            "0x0aa1a214925844d8b2f915ad00a5a0fe90a030e0",
+            "0xc25e140bd3f8753528f1dbdae55bf2cbce97dc13",
+            "0x436c63cb2071fe0dc2e69a9802491f7560023c7c",
+            "0xc09b0d13bca70e57d51036aeacfbbe14d9f0748c",
+            "0x5cea48f182ba48667eb552e544bedc4c59c106d1",
+            "0x4cfcb5ff7ee39865c0c3fab6e9b9ddf3c7e5cf0c",
+            "0x0f877953626af01954a57772b389d87ab8290a66",
+            "0x23618e4a2dd25c612cf77d59184defd9da0ce22c",
+            "0xe0daedff7c403b623b40e86d443403f5e03ee569",
+            "0x08ba0b51af4d0e3a75860b19d6760e023dee953f",
+            "0x169933ca900aad287c414986b1d364abe58530f4",
+            "0x0d791266553866bf513ee60ed7f8d217dedd3c7f",
+            "0x2fc741cec7184408504304f4b94ebe968256b53b",
+            "0x37176c3f56803502260c68c15efcf06f935b6626",
+            "0xa248da597d1525cdd816ed3daec1df2db7b51495",
+            "0xb89f83ddda183b1bb270d149a328806e4b225c26",
+            "0xebf118c8f20cfababbe6c97b2b22fcdd43101cfc",
+            "0xad9e7ddd4d7e756d56d36d27f96bcec667a77559",
+            "0xc8c6c2a785ada3b648cbc2c44ebe0c4b1266ecd7",
+            "0x05aa8865e29e46ccc29cf20d3cd2d2885a3762f9",
+            "0x61530a05690c2b9837c8a57f5eb52a15fad4808a",
+            "0x19045c489e5e05e6b10272fbbb237d8fbbd25e7f",
+            "0xf635de5968860203dcb4cd54bdbe20b5684a37c3",
+            "0x38604d97b5100e0845bb9744dbfeb1531a73294d",
+            "0x4cdc2856a5d8c319401d97dccf016586aa0bf377",
+            "0x78cf21a59eb5b7e3dd38e42b0e2b0e62b2bb1dd2",
+            "0x4398623c6851bc73ba1b5158a959c004b80ecfe0",
+            "0xc761ddbbdb1ab94e5d74e33e42cff919f4225740",
+            "0x66990d21bb5eadf41a70d7e7091fc803361856fa",
+            "0xbc3fccd60d9f29a49a233ac09d7b37f1a0360193",
+            "0x16634e18a17abe17d2ac12feeb54e07e212e0bbe",
+            "0x9aa5f5d3dbcf2d1df7760752a448d89d28fd76c9",
+            "0x44a5199dc6883cab2c5dd93aa3be7c8988a70150",
+            "bc1qtd3xr3qxtsc59qa4nscxhhpp4gvq98j68f788e",
+            "0xf0feaf8531e8e2e78b94596d57a909a579e19e0f",
+            "0x9aa5f5d3dbcf2d1df7760752a448d89d28fd76c9",
+            "bc1q4xuaj4k43ulg5e8rdml7tjcrqvzchjkdrvzv3w",
+            "bc1qv5ntvnjqrgly88w768jma32zwlll6ts3358vlm",
+            "bc1qfpgada9rwj42rzx9tgc3w4eyh98pt66t55l5rz",
+            "bc1qm73568wtkge3y6uv29xmetpjmhv3cw0ddfph52",
+            "bc1qrr5d8q9rq0p0vzkg4hh8ahhdnx3u7ayhhl26ac",
+            "bc1qs7l7x7vt0n7uf5hjs6zfpgny9xehyusyp0095z",
+            "bc1ql3w6urhf7xqwa22fuegfkafqg94mwkwm58eqxl",
+            "bc1qvvgz66nc4cxxedjx9ycwfrrg6fk5ae8r5v3jka",
+            "bc1q2xaknqvstnfj8yzqf32d4f50a0uxmpgceyq79t",
+            "bc1qtfr70m68xz7y83nc3scneuqfrekggzym9yam4t",
+            "bc1q2kvq34jllr9y3sc5a899yr2p2s2axxg7pefuqv",
+            "bc1qtd3xr3qxtsc59qa4nscxhhpp4gvq98j68f788e",
+            "bc1p28dhnzgthdrsfusryvgnlqe6q2w9n8h4gmmvsyltyz2ajlrm0j7qlgt5vq",
+            "bc1p2l4weth4kjjr2d3t7g720r7dw6xmn3nl8r0g42nu8u76cuxx089sg4zcal",
+            "bc1prz49t239d2ykhvlufs28l84lwev2vg3zuq6jagdz2fqyh6p5zrvq8ek8uj",
+            "bc1p69naqwtexych965gf9z23fe58hrm7v7aggugkrnemf2749wglqzsx0ct0j",
+            "bc1p3y7a9kc2ms0wu4smdqql7c69vl7u8lzhwkhr4hre5tvf88z7368qfqmeqp",
+            "bc1pu0d37cl2eq6ty5rz4xuk4fqyeumnyvlp6mxy9u8mar4dddzf6mnqp2yzdm",
+            "bc1p7wspdgnqdqupyvgtfzdy5qalw4z07tllfcc27wwru8qcexuqrz9qmtqpj0",
+            "bc1pf0cxw2py9hl5pdlxwqg8tepmz0txrv4ypessn0rxmf5chevhgkqst42hwf",
+            "bc1pnl4uajrsztm0695nxe992jn70ud2fqppv3ln7qzneapw5lg3vr8qfj04pm",
+            "bc1qtd3xr3qxtsc59qa4nscxhhpp4gvq98j68f788e",
+            "bc1q28agned9hpj9uvdv9y3fsy7jew2l2xf4zl656j",
+            "bc1q597f6nlz0kxm4mwnysz5kmrc93375dlsf8fqsa",
+            "bc1q8y7sh6zlsdvksa70jk63refqghppwa2tepwpwp",
+            "bc1qacugmree2gjza6g9gkyxwfnjaz72axnekvpxvz",
+            "bc1q9rf9ehmm2m5tpd69pcd2mp8suggpxkzplcgz6v",
+            "bc1q0ef2s9lv5zgnfsfscwdxmrxwupn9hl3twz98r6",
+            "bc1qs87ndpzrqkjucc4sujygku8qtrsp62c2njqjjv",
+            "bc1qtwnswqpwttsxugcwmdzfaumgcxevncc6a6mq8y",
+            "bc1q0lhhexygy46tqwg29y6pvt8ql6kz8nfc4z6f28",
+            "bc1qudffw53r0leaj4klrs92c306vdls9h2zllduaf",
+            "bc1qe8rtpr4yqns7m9uwupdm5r0clhr55vpw952a38",
+            "bc1qghvcfu57x3lvxvnkk9jrscelj9yprjm7s2hup4",
+            "bc1q3gxjpkqhsgrypzhm9yv9re6k5tq6gmyveetru3",
+            "bc1q39h02hxw9e2l03k5rrks5zlltjj4eqkkkcu79g",
+            "bc1qwgmfgvwn8psgq40zezj9jxcexthlpwu3azusyt",
+            "bc1q4xuaj4k43ulg5e8rdml7tjcrqvzchjkdrvzv3w",
+            "bc1qv5ntvnjqrgly88w768jma32zwlll6ts3358vlm",
+            "bc1qfpgada9rwj42rzx9tgc3w4eyh98pt66t55l5rz",
+            "bc1qm73568wtkge3y6uv29xmetpjmhv3cw0ddfph52",
+            "bc1qrr5d8q9rq0p0vzkg4hh8ahhdnx3u7ayhhl26ac",
+            "bc1qs7l7x7vt0n7uf5hjs6zfpgny9xehyusyp0095z",
+            "bc1ql3w6urhf7xqwa22fuegfkafqg94mwkwm58eqxl",
+            "bc1qvvgz66nc4cxxedjx9ycwfrrg6fk5ae8r5v3jka",
+            "bc1q2xaknqvstnfj8yzqf32d4f50a0uxmpgceyq79t",
+            "bc1qtfr70m68xz7y83nc3scneuqfrekggzym9yam4t",
+            "bc1q2kvq34jllr9y3sc5a899yr2p2s2axxg7pefuqv",
+            "bc1qrw8j979nle83jjq2ymwgp7vefu6awym9zws2h3",
+            "bc1q94wyrgs3tu2wa9afguksrleen8j2uggvdgws9r",
+            "bc1qjv8vwj3hkcelra0rjhupunf8ytyqzlesywxztj",
+            "bc1qjq0pp6etav8gtrm9566zysqgy4qnk68uq8ptj9",
+            "bc1quy2ncf3lus5l5qae7frz3cacavgj6s324ehg0l",
+            "bc1q62cnpfzwazcu7mwk2jmyvlvn8k96aydszx0j0c",
+            "bc1qmsh0aq6a75mspa84690a6kukqwfcxmevv2f9zz",
+            "bc1qaq5styz2nl7m06qntwcnkyu5kz4sajck3jxrs9",
+            "bc1qdn62v5dppvv5805v9ssp6qjtppg40pgqj8570w"
+          ]
+        }
+      ]
+    }
+  }
+}
+
+{
+  "count": 50,
+  "reports": [
+    {
+      "id": "903be7d1-f636-4afa-a7e8-fcb8734f6c4c",
+      "createdAt": "2025-11-28T11:51:58.326Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "39iAteC3cxbABDj5X2GiVgVBLjGMrfNGDn",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mackupfr"
+        },
+        {
+          "address": "39iAteC3cxbABDj5X2GiVgVBLjGMrfNGDn",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mackupfr"
+        }
+      ]
+    },
+    {
+      "id": "6f859bc7-f9bc-46ea-a6f6-23af8d71c091",
+      "createdAt": "2025-11-17T23:25:57.401Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "TB6cyEoxmn2r9smcnEAmmLeG4iXWyEa1CR",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/lheroindgp/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://zixiptv.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "secure-tv.top"
+        }
+      ]
+    },
+    {
+      "id": "bdc50296-09a0-4fb3-ba74-f1c71c367d65",
+      "createdAt": "2025-11-05T19:37:35.065Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0xb4907cee877608aed97e7e9a2e961ca752251df5",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/nains_crypto/"
+        }
+      ]
+    },
+    {
+      "id": "d2fa43ac-f819-481e-aadb-84f71c4ecc48",
+      "createdAt": "2025-10-28T15:47:54.455Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "bc1qzd6ld3pr209munpz5u0wk8uxgwwm06a5fph2gz",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/zionbellucci/"
+        },
+        {
+          "address": "bc1qzd6ld3pr209munpz5u0wk8uxgwwm06a5fph2gz",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/zionbellucci/"
+        }
+      ]
+    },
+    {
+      "id": "10ab1ef0-432e-4875-baa6-3cab41915a73",
+      "createdAt": "2025-10-22T23:09:51.306Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/cathhmu"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/cathhmu"
+        }
+      ]
+    },
+    {
+      "id": "87a4d4af-9d73-421c-a5e5-72127ff39429",
+      "createdAt": "2025-10-20T05:05:25.327Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x00000000009E50a7dDb7a7B0e2ee6604fd120E49",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/krystalhmong?igsh=a3ZhYW1rNjF1ZmRh"
+        }
+      ]
+    },
+    {
+      "id": "01e0d010-fb10-4a93-9778-3680c7725d4f",
+      "createdAt": "2025-10-15T20:39:06.732Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "TCfmurjLK1678Br1GEMiQ8n7njb8BvyQVF",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/joinchat/ALPj3E2jWgbFmcX0G6drqA"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/iferglukes"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/thefbabros/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.TikTok.com/thefbabros"
+        }
+      ]
+    },
+    {
+      "id": "04bb3f34-1515-45f1-9329-42536bd4a5db",
+      "createdAt": "2025-10-03T05:34:32.884Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PIGBUTCHERING",
+      "addresses": [
+        {
+          "address": "0x2F2B1B56E1d1f138376CDA4Eb8F52c97F0ACd7F8",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://h5.lbmaex.xyz/#/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/__victor_sloane?igsh=NTc4MTIwNjQ2YQ=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61579987078213&mibextid=wwXIfr&mibextid=wwXIfr"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.threads.com/@__victor_sloane"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.tiktok.com/@victor00_18?_t=ZP-90EPbUUkF5y&_r=1"
+        }
+      ]
+    },
+    {
+      "id": "e2d8dde0-a605-4a59-8bba-a5f8594a7cdd",
+      "createdAt": "2025-10-02T03:11:17.073Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PIGBUTCHERING",
+      "addresses": [
+        {
+          "address": "0x2F2B1B56E1d1f138376CDA4Eb8F52c97F0ACd7F8",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://h5.lbmaex.xyz/#/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/victor_0518_?igsh=NTc4MTIwNjQ2YQ=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.threads.com/@victor_0518_?igshid=NTc4MTIwNjQ2YQ=="
+        }
+      ]
+    },
+    {
+      "id": "6d72db3a-b24a-4d7d-81c4-284029f31ce9",
+      "createdAt": "2025-09-18T22:07:55.594Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "0x2CF7d33BdF5985d8F3013D244c21f069fe3f184E",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "Instagram.com"
+        }
+      ]
+    },
+    {
+      "id": "14a52914-5562-4128-92ee-b95d8ec9eaeb",
+      "createdAt": "2025-09-13T17:50:59.983Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "7NrQtTykxsFosuAYx9dDEZGa7cnWeMmK8PAevTPkMK5b",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/joeyycrypto"
+        },
+        {
+          "address": "7NrQtTykxsFosuAYx9dDEZGa7cnWeMmK8PAevTPkMK5b",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/joeyycrypto"
+        }
+      ]
+    },
+    {
+      "id": "c62700bc-e9f3-4c7b-ab83-7c35e164f0c9",
+      "createdAt": "2025-09-04T14:21:13.372Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/sheshemercedes?igsh=MXY2Zmc2MGdndTNlNw=="
+        }
+      ]
+    },
+    {
+      "id": "2ad19123-aedb-4823-bb38-4e7b8242dfa5",
+      "createdAt": "2025-09-01T18:29:09.564Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "TKYczjkCkLNa4usYXZpMtFm93T2y6zQzbB",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/c0henimports?igsh=amM3amozMzIxaWR3"
+        }
+      ]
+    },
+    {
+      "id": "e31baf47-a688-4f90-9f91-373306e52def",
+      "createdAt": "2025-08-31T13:14:38.952Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER_HACK",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/bloom_elara?igsh=MWs2cXFyOGhzZmo4MA=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/bloom_elara?igsh=MWs2cXFyOGhzZmo4MA=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/bloom_elara?igsh=MWs2cXFyOGhzZmo4MA=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/bloom_elara?igsh=MWs2cXFyOGhzZmo4MA=="
+        }
+      ]
+    },
+    {
+      "id": "a8d21ec4-2fe5-4397-af0c-e59de20afc69",
+      "createdAt": "2025-08-28T23:49:35.767Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "TP72yGMcd26K9mL7JiK9sxtcJkprjFqE3b",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/share/reel/BASNpQLGEv"
+        }
+      ]
+    },
+    {
+      "id": "232f2807-cae9-4aee-82ef-57697034cd56",
+      "createdAt": "2025-08-06T22:31:22.947Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": "0x5c94986778fb67f1f63f48b1aa4bde221eaabbe9",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "bc1qnz4wqfevv50ymjt3xq4tphud4mrlvsdjeuctr2",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/liliia.lilly?igsh=MWtqYjh2MDA2ZzQ3"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/emmakittyemma?igsh=NDAzMmp4emk2eHZw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://onlyfans.com/gigiemma"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://onlyfans.com/lyyselena"
+        }
+      ]
+    },
+    {
+      "id": "2a2c71eb-d773-4639-82be-9e95db69e1e6",
+      "createdAt": "2025-08-06T02:00:17.704Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "LTLmEjo9aJPy8zQjij2S7P9LsnGtsBRQs6",
+          "chain": "LITECOIN",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/richonfunds/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discordapp.com/users/886633563255111680"
+        },
+        {
+          "address": "LTLmEjo9aJPy8zQjij2S7P9LsnGtsBRQs6",
+          "chain": "LITECOIN",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/richonfunds/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discordapp.com/users/886633563255111680"
+        },
+        {
+          "address": "LTLmEjo9aJPy8zQjij2S7P9LsnGtsBRQs6",
+          "chain": "LITECOIN",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/richonfunds/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discordapp.com/users/886633563255111680"
+        },
+        {
+          "address": "LTLmEjo9aJPy8zQjij2S7P9LsnGtsBRQs6",
+          "chain": "LITECOIN",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/richonfunds/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discordapp.com/users/886633563255111680"
+        }
+      ]
+    },
+    {
+      "id": "b859e6e4-e074-4390-b4aa-0c29c36a0772",
+      "createdAt": "2025-08-04T22:36:12.893Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/sherlockwhale"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discordbotlist.com/servers/foxianorg"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.foxian.org/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/foxianorg/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/foxianorg/status/1952038411604304198"
+        }
+      ]
+    },
+    {
+      "id": "adc29825-815a-4050-87df-ec8d7e691f96",
+      "createdAt": "2025-08-02T20:41:22.947Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": "0x80fc4075fEFE9B136741fa03Dd34851aA7959822",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/asly95717?igsh=MXh6cXp4aWQ1ZDdn"
+        }
+      ]
+    },
+    {
+      "id": "73c73f94-6d60-4da2-a3dd-19c49d7f2c7c",
+      "createdAt": "2025-08-02T20:31:56.340Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/asly95717?igsh=MXh6cXp4aWQ1ZDdn"
+        }
+      ]
+    },
+    {
+      "id": "1d4f8fb3-0a36-4184-b7ab-054d3196ab77",
+      "createdAt": "2025-07-31T19:58:18.208Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "TTevJSQbmd1Sez7E9YzTYH4VEDGU5BiVyQ",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TMWqvXkTByqbbsoztZ6tWn1X4kF5qNQ91Z",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/dynmic_usdt_buyer?igsh=MWd1a21obm9lNmlqNA=="
+        }
+      ]
+    },
+    {
+      "id": "2b48052f-adcd-44f5-ac3e-f687085b55da",
+      "createdAt": "2025-07-31T19:58:16.826Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "TTevJSQbmd1Sez7E9YzTYH4VEDGU5BiVyQ",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TMWqvXkTByqbbsoztZ6tWn1X4kF5qNQ91Z",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/dynmic_usdt_buyer?igsh=MWd1a21obm9lNmlqNA=="
+        }
+      ]
+    },
+    {
+      "id": "740da112-27bb-472b-82f5-cdcfd946f51d",
+      "createdAt": "2025-07-27T11:28:05.023Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0xc6d6f5f46b6f901921c1a4e8a05df8e8ad471e00",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": "0x4ae627100b18f601c500b89cbbf15370b6cd495a",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": "0xa96be652a08d9905f15b7fbe2255708709becd09",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/ARS2333222"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Rustamm28"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Mihario"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Glebovski001"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/bgnaid"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/alex_spiridonovv"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/arseniy_elenvagen"
+        },
+        {
+          "address": "0xc6d6f5f46b6f901921c1a4e8a05df8e8ad471e00",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": "0x4ae627100b18f601c500b89cbbf15370b6cd495a",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": "0xa96be652a08d9905f15b7fbe2255708709becd09",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/ARS2333222"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Rustamm28"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Mihario"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Glebovski001"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/bgnaid"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/alex_spiridonovv"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/arseniy_elenvagen"
+        }
+      ]
+    },
+    {
+      "id": "1d4969f6-0630-441f-b6c5-ad5d6e35bcc7",
+      "createdAt": "2025-07-18T22:44:38.813Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "FfhKgv1RdhsGUg1pUPo8RjZNdFJoc5Z9fFHtvf3TfTmW",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.mediatown.agency"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mediatown.agency"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/MediaTownAgency1"
+        }
+      ]
+    },
+    {
+      "id": "bba651b9-114c-45f5-a6be-d7632b4133d9",
+      "createdAt": "2025-07-09T06:20:35.745Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "bc1pasr8n7v058tv9m0k6ukpvm2ulylmtyzgayyylayyqns2tujktg6ql5v6ya",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/ricoscored?igsh=MW9peTVxYTI1NG53OQ=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.tiktok.com/@ricoforeverscore?_t=ZP-8xsNoQdzu86&_r=1"
+        }
+      ]
+    },
+    {
+      "id": "fbf5f267-431e-4fa8-b1ae-fbbfdc69d7a7",
+      "createdAt": "2025-06-22T11:39:00.769Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": "1BX8HbgMbCmaDeAGq9a33RuM6TgqHDpsb7",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "Instagram.com"
+        }
+      ]
+    },
+    {
+      "id": "eb431601-4c4a-43cc-b605-1fea5afa3f96",
+      "createdAt": "2025-06-14T22:51:21.854Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "0x21F5B2BAcb67C94Aa0982cE7428f7d1B3c9cEB53",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://snorter-token.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/SnorterToken"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/snorterbot/"
+        }
+      ]
+    },
+    {
+      "id": "334b348a-fca6-401b-97d5-db19af5f3b5e",
+      "createdAt": "2025-06-14T18:19:00.157Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x991a4307ec75e59ce4cb237f98f57ec639910c10",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://instagram.com/smmarketproofs"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/miasiaj"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/briseburn"
+        }
+      ]
+    },
+    {
+      "id": "5ada9c4e-2b62-4bcd-9950-d1ae97418ae8",
+      "createdAt": "2025-06-13T02:51:55.121Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "THi8LCbsaT4HsR3cDC9VDFGjMCFDiUhUtq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/x_change_usdt?igsh=NmYxODByZmtpazhz"
+        },
+        {
+          "address": "THi8LCbsaT4HsR3cDC9VDFGjMCFDiUhUtq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/x_change_usdt?igsh=NmYxODByZmtpazhz"
+        }
+      ]
+    },
+    {
+      "id": "6b3fb4dc-706b-408b-ae49-0397acf1bfe8",
+      "createdAt": "2025-06-13T02:50:49.165Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "THi8LCbsaT4HsR3cDC9VDFGjMCFDiUhUtq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/x_change_usdt?igsh=NmYxODByZmtpazhz"
+        },
+        {
+          "address": "THi8LCbsaT4HsR3cDC9VDFGjMCFDiUhUtq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/x_change_usdt?igsh=NmYxODByZmtpazhz"
+        }
+      ]
+    },
+    {
+      "id": "6757716a-a709-48e7-9d5a-fb6294f7e609",
+      "createdAt": "2025-06-09T14:09:18.570Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "AIRDROP",
+      "addresses": [
+        {
+          "address": "36vmCpSroRK57x2x6xMU3C427Arg3FrPDd",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/julia_parkers357706/?__pwa=1"
+        }
+      ]
+    },
+    {
+      "id": "a41f55e5-9061-481b-bdab-10e66d82d7f7",
+      "createdAt": "2025-06-07T20:45:02.807Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x65193488A8260B65D548234BDD994f4187000800",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mironovniko?igsh=dHhydnhrc3Fpc2Yw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Nikita_Mironov"
+        },
+        {
+          "address": "0x65193488A8260B65D548234BDD994f4187000800",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mironovniko?igsh=dHhydnhrc3Fpc2Yw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Nikita_Mironov"
+        },
+        {
+          "address": "0x65193488A8260B65D548234BDD994f4187000800",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mironovniko?igsh=dHhydnhrc3Fpc2Yw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Nikita_Mironov"
+        },
+        {
+          "address": "0x65193488A8260B65D548234BDD994f4187000800",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mironovniko?igsh=dHhydnhrc3Fpc2Yw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/Nikita_Mironov"
+        }
+      ]
+    },
+    {
+      "id": "0461dabf-dfe8-4dd7-86d1-9ccc56049370",
+      "createdAt": "2025-06-07T07:31:17.836Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": "0xaf26d220a53a4efab59c918b109c0f9eb3c159be",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "chitchat.gg"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "instagram.com/madelynkghtlngr"
+        },
+        {
+          "address": "0xaf26d220a53a4efab59c918b109c0f9eb3c159be",
+          "chain": "ETH",
+          "domain": null
+        }
+      ]
+    },
+    {
+      "id": "4362f3e6-b11a-473e-9d21-84f0121a53fb",
+      "createdAt": "2025-06-06T14:42:50.232Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": "0xaf26d220a53a4efab59c918b109c0f9eb3c159be",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "www.chitchat.gg"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "instagram.com/madelynkghtlngr"
+        }
+      ]
+    },
+    {
+      "id": "fb57b85c-baec-405f-82eb-5000aab0a611",
+      "createdAt": "2025-05-30T05:09:28.953Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/casss.szn?igsh=MTh6cXUxZGxka2tpZQ=="
+        }
+      ]
+    },
+    {
+      "id": "f439ff18-cf85-462a-b3bb-8e2aeaf1d210",
+      "createdAt": "2025-05-27T01:33:32.370Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "3DANeFdxqoLKtr3dyvLn83h6aTFx9JaWVP",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.reddit.com/user/SiennaCaldsxox/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/siennacaldsxox/"
+        },
+        {
+          "address": "3DANeFdxqoLKtr3dyvLn83h6aTFx9JaWVP",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.reddit.com/user/SiennaCaldsxox/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/siennacaldsxox/"
+        }
+      ]
+    },
+    {
+      "id": "bd9df373-a8af-4e7f-9db0-57626e206d84",
+      "createdAt": "2025-05-26T14:28:44.377Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1qwkw99zlaasf6hecn5qehn4ntgsmmang6jha7fa",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": "1KXftpachHqMWxf9iwr9uyiBCvyrM3U3W9",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/kingkieranjm/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.amplifyforex.com/account/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.cruxtrade.online/"
+        },
+        {
+          "address": "bc1qwkw99zlaasf6hecn5qehn4ntgsmmang6jha7fa",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": "1KXftpachHqMWxf9iwr9uyiBCvyrM3U3W9",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/kingkieranjm/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.amplifyforex.com/account/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.cruxtrade.online/"
+        }
+      ]
+    },
+    {
+      "id": "2bdaaa3f-fe23-4084-90ab-b76d811980c0",
+      "createdAt": "2025-05-24T02:26:59.785Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/leslie11172?igsh=eXlnajFkMjk3d2Rn"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/leslie11172?igsh=eXlnajFkMjk3d2Rn"
+        }
+      ]
+    },
+    {
+      "id": "e87cab2d-af03-4bdb-9be9-9fbe3f049854",
+      "createdAt": "2025-05-21T17:57:38.582Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "RUG_PULL",
+      "addresses": [
+        {
+          "address": "CcKfkfkXXFyZJQNaq4a7eUJERew4HoZEo7U9TSNWMzyw",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/lxc1x/"
+        }
+      ]
+    },
+    {
+      "id": "2f60f9a7-c150-4cf8-b6aa-32b8c071e119",
+      "createdAt": "2025-05-20T18:04:02.741Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0xd3844345eb3551cf527f15ec96aed392f4905e76",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/6bibekyyy9/"
+        },
+        {
+          "address": "0xd3844345eb3551cf527f15ec96aed392f4905e76",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/6bibekyyy9/"
+        }
+      ]
+    },
+    {
+      "id": "daf5e73b-4061-4074-826b-9fe2154d831c",
+      "createdAt": "2025-05-20T18:04:01.575Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0xd3844345eb3551cf527f15ec96aed392f4905e76",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/6bibekyyy9/"
+        },
+        {
+          "address": "0xd3844345eb3551cf527f15ec96aed392f4905e76",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/6bibekyyy9/"
+        }
+      ]
+    },
+    {
+      "id": "62a04f5b-d8a6-4c7f-aca6-41dff3d486b4",
+      "createdAt": "2025-05-13T01:56:20.693Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "TT6oJ6PJouhuDcc3FciiUHyrfqXMsZJ4s5",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TBiRj19b7pdJsUws7KNymKnf6TLkZZJ6gV",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TRDQgFUfGcKhrU9bwdH3mSevcLrpyxyv2G",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://whitecastle.fund/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/agrmdih"
+        }
+      ]
+    },
+    {
+      "id": "442dbe5c-1d44-49cb-a686-3f177328659c",
+      "createdAt": "2025-05-01T14:04:34.303Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x555907a0b5c32DF0fEb35401187aED60a9191D74",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa1e7BC1C6a45e79cE039Befa75De1b3d2B281E56",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xe4bb64b976bA9Fb3647Af2A958760E8C7d7A85aC",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://trumpwifhat.link/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/trumpwfx"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/trumptwhx"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/trump_wifhat/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/trump_wifhat/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/trumpwifhat"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://medium.com/@trumpwifhatx"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discord.com/invite/4kgqdxKrUK"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.youtube.com/@trumpwifhatx"
+        }
+      ]
+    },
+    {
+      "id": "3c6a7444-e789-40af-91a4-3be960140ea6",
+      "createdAt": "2025-04-28T09:48:24.364Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "TKrbBEtqXjePuuSBazYQeaGmBnD1bDA3D1",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TDMwanXeWgaEk3kn52PWMSEFC4gLHEokbw",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/yzfxtothemoon?igsh=YmtiNnZwdDRuOTJ5"
+        }
+      ]
+    },
+    {
+      "id": "27f9485b-4473-4532-b204-e0e0ecceab9e",
+      "createdAt": "2025-04-26T21:02:33.571Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "TKWnFn9MWsjZ8yYhEZts3wcpBMkjktFr2E",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/eduardodiaz.ok?igsh=c3dsMzg3cjN2MHU3"
+        }
+      ]
+    },
+    {
+      "id": "d09ef137-0266-401a-921a-81560b168702",
+      "createdAt": "2025-04-23T19:05:55.886Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "TUkWFBZS9AD21T9fk4MKTpnKzQGELqAj4D",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TRAxd722tsaNv6tP5hntTvct1nRst4ha5y",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TSfQSJ6HZxdye86BASRmYGuUSYWZRM7Zfq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "0x1977524B0e94F949Ad8d8459C06942c63a0aBA7c",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TAMNcPhxskCyAYjM5Hi9Lh6QJEGXghapoo",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/barbotsoy?igsh=MWpmYWo0dzZ3d3p5aQ=="
+        },
+        {
+          "address": "TUkWFBZS9AD21T9fk4MKTpnKzQGELqAj4D",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TRAxd722tsaNv6tP5hntTvct1nRst4ha5y",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TSfQSJ6HZxdye86BASRmYGuUSYWZRM7Zfq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "0x1977524B0e94F949Ad8d8459C06942c63a0aBA7c",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TAMNcPhxskCyAYjM5Hi9Lh6QJEGXghapoo",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/barbotsoy?igsh=MWpmYWo0dzZ3d3p5aQ=="
+        },
+        {
+          "address": "TUkWFBZS9AD21T9fk4MKTpnKzQGELqAj4D",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TRAxd722tsaNv6tP5hntTvct1nRst4ha5y",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TSfQSJ6HZxdye86BASRmYGuUSYWZRM7Zfq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "0x1977524B0e94F949Ad8d8459C06942c63a0aBA7c",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TAMNcPhxskCyAYjM5Hi9Lh6QJEGXghapoo",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/barbotsoy?igsh=MWpmYWo0dzZ3d3p5aQ=="
+        },
+        {
+          "address": "TUkWFBZS9AD21T9fk4MKTpnKzQGELqAj4D",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TRAxd722tsaNv6tP5hntTvct1nRst4ha5y",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TSfQSJ6HZxdye86BASRmYGuUSYWZRM7Zfq",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "0x1977524B0e94F949Ad8d8459C06942c63a0aBA7c",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "TG4HCF52euLdPeFrGibw26AQu2G4QFo1R8",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TAMNcPhxskCyAYjM5Hi9Lh6QJEGXghapoo",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/barbotsoy?igsh=MWpmYWo0dzZ3d3p5aQ=="
+        }
+      ]
+    },
+    {
+      "id": "fb0901aa-93c5-4c2b-aa3f-fd191261232f",
+      "createdAt": "2025-04-21T15:55:14.975Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PIGBUTCHERING",
+      "addresses": [
+        {
+          "address": "0x4855A50674F4A0273Cce5346C86B1489b4313e8a",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/officialisabella01/"
+        },
+        {
+          "address": "0x4855A50674F4A0273Cce5346C86B1489b4313e8a",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/officialisabella01/"
+        }
+      ]
+    },
+    {
+      "id": "9973653c-68c8-4e32-85ab-70cbd52f0031",
+      "createdAt": "2025-04-13T14:48:44.821Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1quycwd6m87eex6n0jqef65u64qwwcz7k3tr203z",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/trisha.dianne_24"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/trisha.dianne_24"
+        }
+      ]
+    },
+    {
+      "id": "ecdb8ac4-9de7-41d4-8baf-44b6324c78ce",
+      "createdAt": "2025-04-10T21:44:38.971Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/pi_vendor_32"
+        }
+      ]
+    },
+    {
+      "id": "c099d17f-aa94-48d0-b787-826932dd0b77",
+      "createdAt": "2025-04-04T16:09:47.566Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": "bc1qvpw4588nqap87qd2t06ar7qc8t26y2t7mccalg",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/gabbyss222?igsh=MW9jdmN2c2xkaW5iOA=="
+        }
+      ]
+    }
+  ]
+}
+
+
+{
+  "count": 50,
+  "reports": [
+    {
+      "id": "79ac61a5-e0e2-45c5-8dfc-998904f6bf7d",
+      "createdAt": "2025-12-03T02:58:48.597Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1q48udhnz34zjc9jp6sc66sjasr67wdz3mqzqmwp0has03jyyyjeesxljnxu",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://m.facebook.com/marketplace/"
+        }
+      ]
+    },
+    {
+      "id": "06492677-9efe-4ae6-abf6-1097d14332a8",
+      "createdAt": "2025-11-24T20:34:13.319Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/marketplace/?ref=app_tab"
+        }
+      ]
+    },
+    {
+      "id": "b7f6345a-2a1b-4580-8205-3a534174877e",
+      "createdAt": "2025-11-08T17:33:14.434Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": "0x08F7D3475Ca5A68418179a4DE4C423c70B824d59",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9b5DCbe516eb6e2f63a29E800B80266779065d86",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x2f31066119Bb4CD00ef6cbAb0dd282CE65F75388",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x118F77b755d757282d6cfa10d38c9cDf3f588E0A",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xE456aDa6B243d8E5df1977Da0D04D2e2ADef410B",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61557081420016"
+        }
+      ]
+    },
+    {
+      "id": "ab203dc1-932a-4a54-bbd6-bd04f6773564",
+      "createdAt": "2025-11-01T05:53:38.062Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/jerome.lalog.395/posts/pfbid02y2mTQt7EV3jGKdRLH4LGBN42MaZVmaMxpVy832om1ppt4KWdiMVW2TavXGxdjChNl"
+        }
+      ]
+    },
+    {
+      "id": "ce1d7019-c359-4f82-9ed8-a7c669f86bb4",
+      "createdAt": "2025-10-20T07:43:41.042Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/zella.naome"
+        }
+      ]
+    },
+    {
+      "id": "b472e219-45de-4907-9f06-9aaf730843d8",
+      "createdAt": "2025-10-15T08:49:00.665Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1qrvegpppps0au78gkctfkahxnj7v7htldfl8maq",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/p/16uqY4LBbJ/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/Anonymousbackuppage?mibextid=ZbWKwL"
+        },
+        {
+          "address": "bc1qrvegpppps0au78gkctfkahxnj7v7htldfl8maq",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/p/16uqY4LBbJ/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/Anonymousbackuppage?mibextid=ZbWKwL"
+        }
+      ]
+    },
+    {
+      "id": "1f67cf87-fd9d-4330-8768-8d5c9e8df696",
+      "createdAt": "2025-10-13T00:40:18.748Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x61A828cc33D4e6e1B978218d6ddbE59b9Db6399B",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1BNgJisUBE/"
+        }
+      ]
+    },
+    {
+      "id": "1e3d7329-f568-4f6b-8ac5-786733f6c4d5",
+      "createdAt": "2025-10-06T03:44:59.958Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "TDyFZeFc4cn4RV9ycVjs22aHadBE2xk2Py",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/177KCDcQKS/?mibextid=wwXIfr"
+        },
+        {
+          "address": "TDyFZeFc4cn4RV9ycVjs22aHadBE2xk2Py",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/177KCDcQKS/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "04bb3f34-1515-45f1-9329-42536bd4a5db",
+      "createdAt": "2025-10-03T05:34:32.884Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PIGBUTCHERING",
+      "addresses": [
+        {
+          "address": "0x2F2B1B56E1d1f138376CDA4Eb8F52c97F0ACd7F8",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://h5.lbmaex.xyz/#/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/__victor_sloane?igsh=NTc4MTIwNjQ2YQ=="
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61579987078213&mibextid=wwXIfr&mibextid=wwXIfr"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.threads.com/@__victor_sloane"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.tiktok.com/@victor00_18?_t=ZP-90EPbUUkF5y&_r=1"
+        }
+      ]
+    },
+    {
+      "id": "47b0c93c-751c-4c73-9d93-7e8d468930b4",
+      "createdAt": "2025-09-29T11:18:25.221Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1CuKwkL6iM/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "0d8c70e6-2801-45ce-a812-1c75a530381c",
+      "createdAt": "2025-09-28T12:14:31.964Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1CTCvQyjUD/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "a5bb7803-be18-4ccf-bb1d-e8fdd9a62d7f",
+      "createdAt": "2025-09-16T19:23:35.909Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER_BLACKMAIL",
+      "addresses": [
+        {
+          "address": "31ksZoP2p6jn92kBEgmCk4Mue5R1SucELJ",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/cristina.darrosa.1"
+        }
+      ]
+    },
+    {
+      "id": "e325a799-fb54-4f62-8b1a-d89849c7a075",
+      "createdAt": "2025-09-12T15:47:38.660Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1A8sFGuoyd/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1A8sFGuoyd/"
+        }
+      ]
+    },
+    {
+      "id": "be60f598-80e4-41e5-824c-0fc467bfe60e",
+      "createdAt": "2025-09-10T14:35:03.933Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1A5QumTkTU/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "b7e2be31-5448-4850-83e2-226d113c2d13",
+      "createdAt": "2025-09-08T15:26:22.131Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1q07085dskpmmaq5pwcs5ky70wf7td75z02x60s3",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/19mToi2YDU/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "181b6556-fd7f-4dfc-a87a-1fb4ae5ba857",
+      "createdAt": "2025-09-08T00:14:38.475Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=100075537471774"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=100075537471774"
+        }
+      ]
+    },
+    {
+      "id": "ce026e14-7010-40da-a62a-4199cc8c3652",
+      "createdAt": "2025-09-08T00:13:01.282Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=100075537471774"
+        }
+      ]
+    },
+    {
+      "id": "cd64faa6-57a0-483c-9427-c70f5b843ecf",
+      "createdAt": "2025-09-08T00:12:53.154Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=100075537471774"
+        }
+      ]
+    },
+    {
+      "id": "bf0ef92b-ef86-411e-8ae4-026a3c8fde9a",
+      "createdAt": "2025-09-08T00:12:53.008Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=100075537471774"
+        }
+      ]
+    },
+    {
+      "id": "fd6a9ce3-0627-43ef-aa33-bc62b2eb9fdb",
+      "createdAt": "2025-09-05T20:37:02.829Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "1ENeEQrQS3MYebCUxs71as2dxyN4Q7RpHW",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/19VHGWwFX6/"
+        },
+        {
+          "address": "1ENeEQrQS3MYebCUxs71as2dxyN4Q7RpHW",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/19VHGWwFX6/"
+        }
+      ]
+    },
+    {
+      "id": "456a5afe-9ca8-47ce-8aa0-5413dd58ad7f",
+      "createdAt": "2025-09-05T06:05:15.789Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "161Ug7qP9keZFQ1uWTieHAs4vDn5i2ty9i",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://l.facebook.com/l.php?u=https%3A%2F%2Fus.luxurytroop.com%2Fwap%2F%23%2Fregister%3Finvitecode%3DSR384987&h=AT0V0LjjTuJDttbKuRHIkqhGqeVcHZaS4tG7QGsCOPgBs7SQmwGZZSFUctYdXYp0deJUosq0nf7tyg-iFE-1OIPcC-678h21k4z56p66n8b1eniLdOq3ku5dkwPKyVYL056xrSpBdby-4HU&s=1https://l.facebook.com/l.php?u=https%3A%2F%2Fus.luxurytroop.com%2Fwap%2F%23%2Fregister%3Finvitecode%3DSR384987&h=AT0V0LjjTuJDttbKuRHIkqhGqeVcHZaS4tG7QGsCOPgBs7SQmwGZZSFUctYdXYp0deJUosq0nf7tyg-iFE-1OIPcC-678h21k4z56p66n8b1eniLdOq3ku5dkwPKyVYL056xrSpBdby-4HU&s=1"
+        }
+      ]
+    },
+    {
+      "id": "5da108a7-d4d1-49f1-943b-9da4f94f9b66",
+      "createdAt": "2025-09-02T19:21:14.315Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/ondoyjennilyn12"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61561969532494"
+        }
+      ]
+    },
+    {
+      "id": "cd8b0d22-1466-478f-9199-03dbd1382f84",
+      "createdAt": "2025-09-01T23:50:44.484Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/rus-tus"
+        }
+      ]
+    },
+    {
+      "id": "87183c8e-22c2-4055-a745-0cddc63f073a",
+      "createdAt": "2025-08-30T21:41:45.512Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": "bc1q2zmh8wyrehdp9p6j5la86tczef52rsm7d5l3e5",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": "bc1q2zmh8wyrehdp9p6j5la86tczef52rsm7d5l3e5",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/ashley.davila1/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://m.facebook.com/daniel.chilton.12/"
+        },
+        {
+          "address": "bc1q2zmh8wyrehdp9p6j5la86tczef52rsm7d5l3e5",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": "bc1q2zmh8wyrehdp9p6j5la86tczef52rsm7d5l3e5",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/ashley.davila1/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://m.facebook.com/daniel.chilton.12/"
+        }
+      ]
+    },
+    {
+      "id": "7afd4464-d7ca-4994-a576-b40d98f01da6",
+      "createdAt": "2025-08-14T15:39:51.189Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=100075273279673"
+        }
+      ]
+    },
+    {
+      "id": "032dade0-f239-4b44-9025-ee89448efd20",
+      "createdAt": "2025-08-06T14:09:48.248Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "86LMH2pPjnZNWwAaLZoedeEGkosMDSCFjnPsBU4cr5NL",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": "bc1qegk7jnxmvfjd7ujf653sgeuvdr3nflaqtrw9zj",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "evedex-exchange.com"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/eriksen.t.kralow"
+        }
+      ]
+    },
+    {
+      "id": "d934a53a-b799-4c6f-81cc-e9bb9b9a2a44",
+      "createdAt": "2025-08-05T18:33:29.678Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "bc1qyc0kd70pulp7z348flsq5twum5lt9zze94hm05",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1AseTkzRwr/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/1391830211932575/?ref=share&mibextid=adzO7l"
+        },
+        {
+          "address": "bc1qyc0kd70pulp7z348flsq5twum5lt9zze94hm05",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1AseTkzRwr/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/1391830211932575/?ref=share&mibextid=adzO7l"
+        }
+      ]
+    },
+    {
+      "id": "0e759a0c-41a0-4e31-86ea-842671fb1251",
+      "createdAt": "2025-08-04T23:58:32.719Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PIGBUTCHERING",
+      "addresses": [
+        {
+          "address": "bc1qcymdngrl4cxa3wk4m9y9w30d7a3xdwkc5s5fs3",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/jp.min.77"
+        },
+        {
+          "address": "bc1qcymdngrl4cxa3wk4m9y9w30d7a3xdwkc5s5fs3",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/jp.min.77"
+        }
+      ]
+    },
+    {
+      "id": "07bd6e5e-4639-4869-b106-cd2dfd69a5f8",
+      "createdAt": "2025-07-30T05:35:48.379Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x480a825bed6cdba9da81cc01faacd12166761dec",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9f814b0b186e268ad6fd71c745e04162e43b2143",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/shiva.k.647735?mibextid=ZbWKwL"
+        },
+        {
+          "address": "0x480a825bed6cdba9da81cc01faacd12166761dec",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9f814b0b186e268ad6fd71c745e04162e43b2143",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/shiva.k.647735?mibextid=ZbWKwL"
+        }
+      ]
+    },
+    {
+      "id": "df7dd1b2-37fb-40e3-9c39-45c594879034",
+      "createdAt": "2025-07-30T05:35:46.748Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x480a825bed6cdba9da81cc01faacd12166761dec",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9f814b0b186e268ad6fd71c745e04162e43b2143",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/shiva.k.647735?mibextid=ZbWKwL"
+        },
+        {
+          "address": "0x480a825bed6cdba9da81cc01faacd12166761dec",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9f814b0b186e268ad6fd71c745e04162e43b2143",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/shiva.k.647735?mibextid=ZbWKwL"
+        }
+      ]
+    },
+    {
+      "id": "1d4969f6-0630-441f-b6c5-ad5d6e35bcc7",
+      "createdAt": "2025-07-18T22:44:38.813Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "FfhKgv1RdhsGUg1pUPo8RjZNdFJoc5Z9fFHtvf3TfTmW",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.mediatown.agency"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/mediatown.agency"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/MediaTownAgency1"
+        }
+      ]
+    },
+    {
+      "id": "442c9134-15e4-4f63-a20b-2766d8b1b27d",
+      "createdAt": "2025-07-13T18:33:44.188Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/mark.paulson.434503"
+        }
+      ]
+    },
+    {
+      "id": "d1b9e12d-3545-42b5-b05f-efb6ba40eabb",
+      "createdAt": "2025-07-03T18:25:41.145Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "ROMANCE",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/gayatri.pollisetty"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "market-pro.cc"
+        }
+      ]
+    },
+    {
+      "id": "e01d95cc-30a4-48d7-91b7-bb5feb614a6f",
+      "createdAt": "2025-06-28T08:18:12.939Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "Cpcy72PTkyWEQAsZmyU8U2nbSPUwwae4DkLzSbJNMtLR",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": "AC5RDfQFmDS1deWZos921JfqscXdByf8BKHs5ACWjtW2",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/anthony.dadeoz"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.tiktok.com/@anthony.dadeoz?_t=ZS-8xZo0di8O8W&_r=1"
+        }
+      ]
+    },
+    {
+      "id": "419d9a20-4a32-4380-a509-39aa057a3a58",
+      "createdAt": "2025-06-22T23:43:36.705Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x1c43a5cd82079c20fdacbe898f9171c139daf7c5",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "TWNTzfKyPaSkSDjVEZnF7AQiZtnhzFHNXi",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://Exnessoptions.com"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/16kBeGpDXh/"
+        },
+        {
+          "address": "0x1c43a5cd82079c20fdacbe898f9171c139daf7c5",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "TWNTzfKyPaSkSDjVEZnF7AQiZtnhzFHNXi",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://Exnessoptions.com"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/16kBeGpDXh/"
+        }
+      ]
+    },
+    {
+      "id": "1e727927-701f-470e-a12b-0c0341458075",
+      "createdAt": "2025-06-11T20:48:24.488Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "RUG_PULL",
+      "addresses": [
+        {
+          "address": "0x2bB84fd8F7eD0FfAe3da36AD60d4D7840bdeEADa",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/soragrok/?ref=share&mibextid=NSMWBT"
+        }
+      ]
+    },
+    {
+      "id": "4118ba87-bfe5-474b-a06e-e98eb94edb3a",
+      "createdAt": "2025-05-23T12:29:43.998Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "DONATION_SCAM",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/opairdrop"
+        }
+      ]
+    },
+    {
+      "id": "2dfc960d-9d6f-4a83-adab-0d062d8d7acd",
+      "createdAt": "2025-05-19T13:46:07.990Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "TPickjwDdnVkeW2uwKDqJ6U8Rkqd4R8AoJ",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/689673003622155/?ref=share&mibextid=WaXdOe"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1LNdcGuZbo/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "Wa.me/212660-053562"
+        }
+      ]
+    },
+    {
+      "id": "79fce310-bc67-4a5d-97f9-8c5e26c30beb",
+      "createdAt": "2025-05-11T11:11:48.871Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "TVLA3roXAM25txXcesQf1XMa3GRiD1fTnD",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": "TVLA3roXAM25txXcesQf1XMa3GRiD1fTnD",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://tronscan.org/#/address/TVLA3roXAM25txXcesQf1XMa3GRiD1fTnD"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/15bpibjwV9/"
+        }
+      ]
+    },
+    {
+      "id": "eb9196a2-a28d-490f-97f1-e185324d6e70",
+      "createdAt": "2025-05-09T01:58:37.571Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER_HACK",
+      "addresses": [
+        {
+          "address": "0xac9d54ca08740A608B6C474e5CA07d51cA8117Fa",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1YSXwapkzK/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "346da2f7-163d-4c33-956d-dee1e9d3e592",
+      "createdAt": "2025-05-02T05:57:11.988Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1qkxgcq0m303m9erlf5k3mnj772p5xjwgag4c7yq",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61572206797547"
+        }
+      ]
+    },
+    {
+      "id": "442dbe5c-1d44-49cb-a686-3f177328659c",
+      "createdAt": "2025-05-01T14:04:34.303Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x555907a0b5c32DF0fEb35401187aED60a9191D74",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa1e7BC1C6a45e79cE039Befa75De1b3d2B281E56",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xe4bb64b976bA9Fb3647Af2A958760E8C7d7A85aC",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://trumpwifhat.link/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/trumpwfx"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/trumptwhx"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/trump_wifhat/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/trump_wifhat/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/trumpwifhat"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://medium.com/@trumpwifhatx"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://discord.com/invite/4kgqdxKrUK"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.youtube.com/@trumpwifhatx"
+        }
+      ]
+    },
+    {
+      "id": "b7ae9528-3fb4-436b-a277-e634698742f3",
+      "createdAt": "2025-03-31T10:55:30.529Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/example"
+        }
+      ]
+    },
+    {
+      "id": "78726a99-64e7-4b88-b152-9b2ccdf1176b",
+      "createdAt": "2025-03-29T17:02:40.422Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": "bc1qdyr6fyz840h4vzrfmvhsm8cm3fq2wms85t9k90",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1B7LWh5D5s/?mibextid=wwXIfr"
+        }
+      ]
+    },
+    {
+      "id": "2683f3ec-4540-47c6-986a-37689e79ef79",
+      "createdAt": "2025-03-24T03:36:06.033Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x6edf62b69a0ad95af5165efba97cb7095edc3989",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x6edf62b69a0ad95af5165efba97cb7095edc3989",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x447607d31023414c8fe63fcde79aca039a79532b",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://projectdapp.pages.dev/start/error/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/592057807100139"
+        }
+      ]
+    },
+    {
+      "id": "c1aaf55b-9cb8-4608-84d1-d7777edb6a8b",
+      "createdAt": "2025-03-21T03:11:52.189Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "CONTRACT_EXPLOIT",
+      "addresses": [
+        {
+          "address": "0xB8729b160b2820cF642346B2ecFee78FC67DEef5",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61554916540188&mibextid=ZbWKwL"
+        },
+        {
+          "address": "0xB8729b160b2820cF642346B2ecFee78FC67DEef5",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61554916540188&mibextid=ZbWKwL"
+        }
+      ]
+    },
+    {
+      "id": "acf8333c-89eb-4203-a671-a4c095e99a9e",
+      "createdAt": "2025-03-17T10:20:43.903Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1qdc9gnr2tqfm78lqhxunapaw605qhkpsq36ysr6",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://apps.apple.com/us/app/valr-bitcoin-exchange-wallet/id1453499428"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=195197f920a09b1b&attid=0.1&disp=attd&realattid=f_m7alavv10&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=19523b133a16ba5f&attid=0.1&disp=attd&realattid=f_m7df4kaj0&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://play.google.com/store/apps/details?id=com.valr.app"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/hc/en-us/requests/new"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/valrdotcom"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/VALRdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/valrdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.linkedin.com/company/valr/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.valr.com/mytransactionhistory"
+        },
+        {
+          "address": "bc1qdc9gnr2tqfm78lqhxunapaw605qhkpsq36ysr6",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://apps.apple.com/us/app/valr-bitcoin-exchange-wallet/id1453499428"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=195197f920a09b1b&attid=0.1&disp=attd&realattid=f_m7alavv10&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=19523b133a16ba5f&attid=0.1&disp=attd&realattid=f_m7df4kaj0&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://play.google.com/store/apps/details?id=com.valr.app"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/hc/en-us/requests/new"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/valrdotcom"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/VALRdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/valrdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.linkedin.com/company/valr/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.valr.com/mytransactionhistory"
+        }
+      ]
+    },
+    {
+      "id": "631515dd-54c5-4b2a-af76-6be2fbfd8985",
+      "createdAt": "2025-03-02T17:01:51.093Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "AIRDROP",
+      "addresses": [
+        {
+          "address": "0x6f2fCB39E2F5e3b7CbCCdD1E17B2eaE7C74395AD",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/profile.php?id=61555299647271"
+        }
+      ]
+    },
+    {
+      "id": "99db86e4-ad08-4633-8009-254e153d15d4",
+      "createdAt": "2025-02-26T15:49:30.981Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "3KTkV43tKWkgBKhbyd56QEsbXp2SDgmDKv",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/share/1Bq8y3WnBA/"
+        }
+      ]
+    },
+    {
+      "id": "5e314f9f-8118-4054-903e-461d6e04b227",
+      "createdAt": "2025-02-22T16:56:15.656Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x05f226755b11cb3666340551ebbaa615cdfefdd6",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://trumpmeme.blog/"
+        },
+        {
+          "address": "0x05f226755b11cb3666340551ebbaa615cdfefdd6",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://trumpmeme.blog/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/groups/1112415147322072/user/61565328542959/"
+        }
+      ]
+    }
+  ]
+}
+
+{
+  "count": 50,
+  "reports": [
+    {
+      "id": "996a77a7-aa38-4593-ab99-5cda96d14ef5",
+      "createdAt": "2025-04-16T14:42:58.431Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "SEXTORTION",
+      "addresses": [
+        {
+          "address": "TDa7zYPiQCFQpxc1DbF5GSv4aG8wRx3qVs",
+          "chain": "TRON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/shanghaixc2?t=B8aX4UBC_kgwDjYtGAe4EQ&s=09"
+        }
+      ]
+    },
+    {
+      "id": "acf8333c-89eb-4203-a671-a4c095e99a9e",
+      "createdAt": "2025-03-17T10:20:43.903Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "bc1qdc9gnr2tqfm78lqhxunapaw605qhkpsq36ysr6",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://apps.apple.com/us/app/valr-bitcoin-exchange-wallet/id1453499428"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=195197f920a09b1b&attid=0.1&disp=attd&realattid=f_m7alavv10&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=19523b133a16ba5f&attid=0.1&disp=attd&realattid=f_m7df4kaj0&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://play.google.com/store/apps/details?id=com.valr.app"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/hc/en-us/requests/new"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/valrdotcom"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/VALRdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/valrdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.linkedin.com/company/valr/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.valr.com/mytransactionhistory"
+        },
+        {
+          "address": "bc1qdc9gnr2tqfm78lqhxunapaw605qhkpsq36ysr6",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://apps.apple.com/us/app/valr-bitcoin-exchange-wallet/id1453499428"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=195197f920a09b1b&attid=0.1&disp=attd&realattid=f_m7alavv10&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=19523b133a16ba5f&attid=0.1&disp=attd&realattid=f_m7df4kaj0&safe=1&zw"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://play.google.com/store/apps/details?id=com.valr.app"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://support.valr.com/hc/en-us/requests/new"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/valrdotcom"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.facebook.com/VALRdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/valrdotcom/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.linkedin.com/company/valr/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.valr.com/mytransactionhistory"
+        }
+      ]
+    },
+    {
+      "id": "03aba550-469f-4b2d-929e-eacb82ad224f",
+      "createdAt": "2024-12-07T23:18:52.310Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "0x7CC75B96F9490142AE0c5427DAc7777b031FBcF0",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/HowNatureWorks"
+        },
+        {
+          "address": "0x7CC75B96F9490142AE0c5427DAc7777b031FBcF0",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/HowNatureWorks"
+        }
+      ]
+    },
+    {
+      "id": "b616ce08-cea7-4b0d-ad65-70790a1c085c",
+      "createdAt": "2024-10-03T20:35:04.194Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0xc17624E8BdC2CBF25cB92cB3eE85f3331B852f62",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/NodleNetwork"
+        }
+      ]
+    },
+    {
+      "id": "c94261c4-6d5e-4db5-9534-036f84ed2bf5",
+      "createdAt": "2024-09-02T20:08:02.718Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "0x05EdA21DDdcD73F5b8cdB42e25A2Ce417Ec25602",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.co/pFwMmMjaHX"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/CryptoAsHelp"
+        }
+      ]
+    },
+    {
+      "id": "c7955c56-80bd-4b74-a9b9-63bb288d4555",
+      "createdAt": "2024-07-27T07:35:08.066Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x388ed3f43bfdd709dC4bD1236A61c48bCf538e48",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://rarible.com/drakeness/activity"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://opensea.io/DrakenessAUS/collected"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/AshDrake7"
+        }
+      ]
+    },
+    {
+      "id": "327ad1ea-d6c9-4525-afdc-4cdd6f33d623",
+      "createdAt": "2024-07-13T00:59:48.776Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x489E3F015771AdB86c6E7869317a0AC4a8AB9fe9",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0xc87B37a581ec3257B734886d9d3a581F5A9d056c",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0xaD12986624637b42D0e2B79B6Af84e12117E8b1B",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0xaD12986624637b42D0e2B79B6Af84e12117E8b1B",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0xaD12986624637b42D0e2B79B6Af84e12117E8b1B",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0xaD12986624637b42D0e2B79B6Af84e12117E8b1B",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xD37BbE5744D730a1d98d8DC97c42F0Ca46aD7146",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/messages/56504392-1784578968051695616"
+        }
+      ]
+    },
+    {
+      "id": "cae0bb37-927b-4a30-b9d2-1947b8d8fff1",
+      "createdAt": "2024-05-12T16:36:25.161Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "CONTRACT_EXPLOIT",
+      "addresses": [
+        {
+          "address": "0xFC4EAA4ac84D00f1C5854113581F881b42b4A745",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x5E5EcEc67dc02289332bb18FC7c9A834b99919F0",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://degen-bonus.com/home"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/degentokenevent/status/1789360226044346760?t=urAmWSgZOJATYryS6LkSvw&s=19"
+        }
+      ]
+    },
+    {
+      "id": "9b2d94a7-5185-4e17-98ff-3969cadc6ede",
+      "createdAt": "2024-05-02T06:57:48.553Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x0000b831c452F5C4c0f765FEfA2CEe6d3B9b0000",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/BSquaredNetwork/status/1781346422182592907"
+        }
+      ]
+    },
+    {
+      "id": "4f41d558-e74c-4e11-acd0-be2ca9ee9c15",
+      "createdAt": "2024-05-01T04:43:15.780Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0xF8D90b242A6d2e15Ad1bE7bc9Ab4eE6f5cbc0AB9",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa747a7F142ea6D0BC350AdFe3F43c57a25F22B11",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x63605E53D422C4F1ac0e01390AC59aAf84C44A51",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://allocation-etherfi.xyz/vote"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/ethr_ffi"
+        },
+        {
+          "address": "0xF8D90b242A6d2e15Ad1bE7bc9Ab4eE6f5cbc0AB9",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa747a7F142ea6D0BC350AdFe3F43c57a25F22B11",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x63605E53D422C4F1ac0e01390AC59aAf84C44A51",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://allocation-etherfi.xyz/vote"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/ethr_ffi"
+        }
+      ]
+    },
+    {
+      "id": "2e11cca8-d7ed-4314-9def-9fa0a043bb35",
+      "createdAt": "2024-04-26T16:44:07.438Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "1Afph7C1Km3pTgZ8VFe9Eb349tjaGEcM65",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/misti7531"
+        }
+      ]
+    },
+    {
+      "id": "101d8b24-39fb-45d8-928a-dcd1dfe96f4e",
+      "createdAt": "2024-04-25T23:14:28.869Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x6031a99b6e5803E888801dB5301AF75ED5cF79dC",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/AilynJusti57976/status/1783456071899660681"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://ether-drop.org/Elon"
+        }
+      ]
+    },
+    {
+      "id": "fe9488b4-c17a-42a3-87a3-db8126aadbdf",
+      "createdAt": "2024-04-25T19:59:08.877Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x1d52a12543a3998f1f694c693b0d379a2fc34eeb",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0x9fa7bb759641fcd37fe4ae41f725e0f653f2c726",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0x1d52a12543a3998f1f694c693b0d379a2fc34eeb",
+          "chain": "POLYGON",
+          "domain": null
+        },
+        {
+          "address": "0x9fa7bb759641fcd37fe4ae41f725e0f653f2c726",
+          "chain": "POLYGON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/HyperliquidY"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://ipfs.io/ipfs/QmejsouWX8XEeEdRUuhhxpRLhLPgdotkfzggsuqCJEsbDf/"
+        },
+        {
+          "address": "0x1d52a12543a3998f1f694c693b0d379a2fc34eeb",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0x9fa7bb759641fcd37fe4ae41f725e0f653f2c726",
+          "chain": "ARBITRUM",
+          "domain": null
+        },
+        {
+          "address": "0x1d52a12543a3998f1f694c693b0d379a2fc34eeb",
+          "chain": "POLYGON",
+          "domain": null
+        },
+        {
+          "address": "0x9fa7bb759641fcd37fe4ae41f725e0f653f2c726",
+          "chain": "POLYGON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/HyperliquidY"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://ipfs.io/ipfs/QmejsouWX8XEeEdRUuhhxpRLhLPgdotkfzggsuqCJEsbDf/"
+        }
+      ]
+    },
+    {
+      "id": "4f6bfd50-b208-4cd2-af25-adf72735d8ab",
+      "createdAt": "2024-04-25T09:51:32.814Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "renzo-twitter.com"
+        }
+      ]
+    },
+    {
+      "id": "40ae05c9-92a8-4f29-a693-9cac9244181f",
+      "createdAt": "2024-04-25T05:26:15.540Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "renzoprotocol-twitter.com"
+        }
+      ]
+    },
+    {
+      "id": "13ea7ff5-8467-46ab-94a9-f0275a672560",
+      "createdAt": "2024-04-24T12:27:43.473Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "0x073274D5ed3963776501ED629bF8e8dF68463220",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/OKX_Ventures/status/1643281149186416640"
+        }
+      ]
+    },
+    {
+      "id": "3fa5f752-0cd9-4a21-bc14-6a4551a7c958",
+      "createdAt": "2024-04-23T08:17:49.713Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/aerodromesfi"
+        }
+      ]
+    },
+    {
+      "id": "94b130fc-6dd3-4895-b0cd-42d7db3ec764",
+      "createdAt": "2024-04-20T15:56:56.544Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "CONTRACT_EXPLOIT",
+      "addresses": [
+        {
+          "address": "0xd4eb40aff4d19df9d6235d5fd223c2308b94b3f8",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/infinite1Dworld"
+        },
+        {
+          "address": "0xd4eb40aff4d19df9d6235d5fd223c2308b94b3f8",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/infinite1Dworld"
+        }
+      ]
+    },
+    {
+      "id": "637e2a0d-7041-4370-9b76-dbc1e78ebb5f",
+      "createdAt": "2024-04-17T22:53:49.141Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "0x2F3ee47088ba82C1230088f382e68f6a7a5f9c92",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/grandlbase_fi"
+        }
+      ]
+    },
+    {
+      "id": "03a52e05-fe7a-4830-a35d-6d47626d12a8",
+      "createdAt": "2024-04-16T21:48:40.171Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x63605E53D422C4F1ac0e01390AC59aAf84C44A51",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/lHashAI_Eth"
+        }
+      ]
+    },
+    {
+      "id": "afea0406-33e8-40b8-9116-4e025c634b83",
+      "createdAt": "2024-04-11T16:52:54.590Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "0x37498d2c39ad84345958e43af725c3039222a067",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "espressosys.com"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/EspressoSys"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://github.com/EspressoSystems"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://docs.espressosys.com/sequencer"
+        }
+      ]
+    },
+    {
+      "id": "8365324a-cc5d-4cdd-9cf9-80ad54fecd4b",
+      "createdAt": "2024-04-08T11:33:37.400Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "RUG_PULL",
+      "addresses": [
+        {
+          "address": "0x142b5658276b4db4047f55cad3692a48b3e480c2",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xbDc4A35a64379BE0755AFFf23C559F7eb111147B",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/BASE_MAGA_MEME"
+        }
+      ]
+    },
+    {
+      "id": "7326e313-c811-434a-a3bd-d686b4429deb",
+      "createdAt": "2024-04-07T09:37:59.030Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "RUG_PULL",
+      "addresses": [
+        {
+          "address": "0x57dcF37335ec4477E79D6D2bca57cB17EeacC7a1",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xdBAB736a2360FBE0e035eD988D161C722d225A97",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://basmanbase.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "bas-man.com"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/BasManBase"
+        }
+      ]
+    },
+    {
+      "id": "4ac71e71-91ad-461b-8de4-057fef7bf70a",
+      "createdAt": "2024-04-05T02:29:32.045Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "0x188D2218780a9E7781632f1Af3aFE5d0A4C4a43D",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/AlekDeFi"
+        },
+        {
+          "address": "0x188D2218780a9E7781632f1Af3aFE5d0A4C4a43D",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/AlekDeFi"
+        }
+      ]
+    },
+    {
+      "id": "b8856d6a-8e5a-48fc-97a9-93e2f1516aa5",
+      "createdAt": "2024-04-04T19:55:31.400Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER_HACK",
+      "addresses": [
+        {
+          "address": "0x955f07051c12c2bbe66fd1ca6e6b1aa7b9970762",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xf58738234646a4b725b6edd57e8fa8a5c7cb315b",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x000099b4a4d3ceb370d3a8a6235d24e07a8c0000",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://basebuilders.beagleswap.xyz"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://beagleswap.xyz/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/beagle_swap"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/insider_base/status/1681548023036538881?s=20"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/beagle_swap/status/1681243662095912960"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://app.galxe.com/quest/beagleswap"
+        }
+      ]
+    },
+    {
+      "id": "1eff007b-2988-409a-a42b-2dddb7bc79fd",
+      "createdAt": "2024-04-04T01:01:59.655Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER",
+      "addresses": [
+        {
+          "address": "0x367c019784e8b4ee666b2fd63773466902236d03",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x4726ac07e3b112b5d72d2d6fac82b7d4150249c0",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/nubonbase1"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/nubon_base"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/NubOnBase"
+        }
+      ]
+    },
+    {
+      "id": "a9a65cca-1e27-489e-9e96-dcfeb3ebdfb0",
+      "createdAt": "2024-04-02T22:56:33.388Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "AIRDROP",
+      "addresses": [
+        {
+          "address": "0xC477D038d5420C6A9e0b031712f61c5120090de9",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/NexusChalnNet"
+        }
+      ]
+    },
+    {
+      "id": "a408c44f-c1d6-45e1-8487-42e6148ad5eb",
+      "createdAt": "2024-03-27T15:23:38.872Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x81ead4918134AE386dbd04346216E20AB8F822C4",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x000099B4a4D3cEb370d3A8A6235d24e07A8c0000",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xe745cA3d675369c5Ee8474ba4cc7306173445943",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x81ead4918134AE386dbd04346216E20AB8F822C4",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://claimsgamin.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/Gaimrnlo/status/1772985993345278098?t=IOcOtCdmAOCZJ2YDH-SAKQ&s=19"
+        },
+        {
+          "address": "0x81ead4918134AE386dbd04346216E20AB8F822C4",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x000099B4a4D3cEb370d3A8A6235d24e07A8c0000",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xe745cA3d675369c5Ee8474ba4cc7306173445943",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x81ead4918134AE386dbd04346216E20AB8F822C4",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://claimsgamin.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/Gaimrnlo/status/1772985993345278098?t=IOcOtCdmAOCZJ2YDH-SAKQ&s=19"
+        }
+      ]
+    },
+    {
+      "id": "6fd4cab9-d840-45f8-ab54-56121631561c",
+      "createdAt": "2024-03-24T11:32:32.864Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x10DEE04832CFBc6DF99CB4afa0eE7a23786FF29d",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "twitter.com/@0xWonders"
+        }
+      ]
+    },
+    {
+      "id": "b076222b-677a-4a4e-8ba3-e9cba17c0144",
+      "createdAt": "2024-03-22T16:02:25.443Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x6B745C2C78e95540b2D71A4e60a38094905E7152",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9fA7bB759641FCd37fe4aE41f725e0f653f2C726",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xFbDd928bFFd75Cc02F775d1b3E1B656A639C4931",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://roostcoin.com/register/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/Roost_Coin"
+        },
+        {
+          "address": "0x6B745C2C78e95540b2D71A4e60a38094905E7152",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x9fA7bB759641FCd37fe4aE41f725e0f653f2C726",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xFbDd928bFFd75Cc02F775d1b3E1B656A639C4931",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://roostcoin.com/register/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/Roost_Coin"
+        },
+        {
+          "address": "0xBDd645976BFFb6c480CCf78770e8A19A74D41af0",
+          "chain": "ETH",
+          "domain": null
+        }
+      ]
+    },
+    {
+      "id": "10c3e61b-3539-449e-832b-d26d1a7410c6",
+      "createdAt": "2024-03-18T09:05:45.727Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "AIRDROP",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/xwg_games"
+        }
+      ]
+    },
+    {
+      "id": "c58c76e6-28c0-4e82-905f-2bbf239e80ea",
+      "createdAt": "2024-03-18T00:13:15.323Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x61894D475D70a6563555858e26E6fB8aCe1a9847",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/walter_bruno7"
+        }
+      ]
+    },
+    {
+      "id": "45deafc9-5531-4c8d-b305-03c74ec3a2a6",
+      "createdAt": "2024-03-17T17:54:49.345Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/dave_mends"
+        }
+      ]
+    },
+    {
+      "id": "1b22ba5e-4599-4bea-b797-a3aa77538750",
+      "createdAt": "2024-03-14T18:15:31.200Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "DONATION_SCAM",
+      "addresses": [
+        {
+          "address": "0x9F52c8ecbEe10e00D9faaAc5Ee9Ba0fF6550F511",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/pengonsol"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://pengcommunity.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/pengonsolana/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/pengonsol"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/DTtotter"
+        },
+        {
+          "address": "0x9F52c8ecbEe10e00D9faaAc5Ee9Ba0fF6550F511",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/pengonsol"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://pengcommunity.com/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.instagram.com/pengonsolana/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/pengonsol"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/DTtotter"
+        }
+      ]
+    },
+    {
+      "id": "1635517e-3726-469e-868b-628fffb8e1cb",
+      "createdAt": "2024-03-10T02:40:21.217Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "OTHER_HACK",
+      "addresses": [
+        {
+          "address": "0xf47298ddfE93D096D0f604221A7919e14cf0922b",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/orbitwars"
+        }
+      ]
+    },
+    {
+      "id": "b10fde45-360e-4293-b010-e25468c0be79",
+      "createdAt": "2024-03-06T16:01:56.157Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "CONTRACT_EXPLOIT",
+      "addresses": [
+        {
+          "address": "0xf378fe43eda839e32f6e10c0c2f556ceae37a1c7",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://synthr-defi.nftmintyourart.com/synthr.html"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/ZhangMother"
+        }
+      ]
+    },
+    {
+      "id": "e0335d4b-c67a-4b15-a683-4a2b8d6a8275",
+      "createdAt": "2024-03-02T07:33:49.911Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x63605E53D422C4F1ac0e01390AC59aAf84C44A51",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://scaliaeth.com/RevenueShare/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/scalialnfraa"
+        },
+        {
+          "address": "0x63605E53D422C4F1ac0e01390AC59aAf84C44A51",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://scaliaeth.com/RevenueShare/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/scalialnfraa"
+        }
+      ]
+    },
+    {
+      "id": "86caf32b-d71c-4adf-adaa-5dcebc1da554",
+      "createdAt": "2024-02-28T22:16:39.655Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "0xB94FfA1aAF14673eC52Ef51Dc81439b99c565282",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x59a7b17299125C9C34bBA4779EAB3D5eD3F3404f",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x473509a8E5198094aF9B87BF6Cb8b193817E88A4",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0x67c8c976DdaF50422e92D7bAE0983b5aF5e214a9",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "nuggetrush.io"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/nugget_rush"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.me/NuggetRush_News"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "multiwallet-system.pages.dev"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "multi-walletsystems.web.app"
+        }
+      ]
+    },
+    {
+      "id": "0762673d-85fa-4eb4-b644-829bedc19502",
+      "createdAt": "2024-02-23T17:16:03.111Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "0x2Ee52be76cB8F53bB53e7493eda48AB16e045b3e",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/MarketMantis_ND"
+        }
+      ]
+    },
+    {
+      "id": "11831bc5-ae38-4737-afd0-b8584623def5",
+      "createdAt": "2024-02-14T20:50:43.990Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0xBF3039b0bB672B268e8384e30D81b1e6a8A43b2c",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/dehub_official/status/1755970104444015028?t=nl7F3arAyOX1UQg_tgC6Fg&s=19"
+        },
+        {
+          "address": "0xBF3039b0bB672B268e8384e30D81b1e6a8A43b2c",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/dehub_official/status/1755970104444015028?t=nl7F3arAyOX1UQg_tgC6Fg&s=19"
+        }
+      ]
+    },
+    {
+      "id": "bdf4b317-2900-4ce8-bba9-7c9c1d84a556",
+      "createdAt": "2024-02-09T15:27:20.046Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "AIRDROP",
+      "addresses": [
+        {
+          "address": "0x6f167B86443D04f4b1705A0c78b6cC6Ac691e381",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xc6753AF56AAe02C3FD87a56bB44E2F16e642C9b2",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xA58A83361936471B50e2d1C7f99d422E6D73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa58a83361936471b50e2d1c7f99d422e6d73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xba386A4Ca26B85FD057ab1Ef86e3DC7BdeB5ce70",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/JulianaGaray99/status/1755807411586084914?t=lDa7SnRiHl0vhKFEd6rn7g&s=19"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://reward.yalama.biz/?twclid=26tqqr54yttrq0plrdhs3leycb"
+        },
+        {
+          "address": "0x6f167B86443D04f4b1705A0c78b6cC6Ac691e381",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xc6753AF56AAe02C3FD87a56bB44E2F16e642C9b2",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xA58A83361936471B50e2d1C7f99d422E6D73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa58a83361936471b50e2d1c7f99d422e6d73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xba386A4Ca26B85FD057ab1Ef86e3DC7BdeB5ce70",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/JulianaGaray99/status/1755807411586084914?t=lDa7SnRiHl0vhKFEd6rn7g&s=19"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://reward.yalama.biz/?twclid=26tqqr54yttrq0plrdhs3leycb"
+        },
+        {
+          "address": "0x6f167B86443D04f4b1705A0c78b6cC6Ac691e381",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xc6753AF56AAe02C3FD87a56bB44E2F16e642C9b2",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xA58A83361936471B50e2d1C7f99d422E6D73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa58a83361936471b50e2d1c7f99d422e6d73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xba386A4Ca26B85FD057ab1Ef86e3DC7BdeB5ce70",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/JulianaGaray99/status/1755807411586084914?t=lDa7SnRiHl0vhKFEd6rn7g&s=19"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://reward.yalama.biz/?twclid=26tqqr54yttrq0plrdhs3leycb"
+        },
+        {
+          "address": "0x6f167B86443D04f4b1705A0c78b6cC6Ac691e381",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xc6753AF56AAe02C3FD87a56bB44E2F16e642C9b2",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xA58A83361936471B50e2d1C7f99d422E6D73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xa58a83361936471b50e2d1c7f99d422e6d73d397",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "0xba386A4Ca26B85FD057ab1Ef86e3DC7BdeB5ce70",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/JulianaGaray99/status/1755807411586084914?t=lDa7SnRiHl0vhKFEd6rn7g&s=19"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://reward.yalama.biz/?twclid=26tqqr54yttrq0plrdhs3leycb"
+        }
+      ]
+    },
+    {
+      "id": "bca87de1-f06b-40bb-a85c-497d1781fa7c",
+      "createdAt": "2024-02-09T13:55:55.741Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x771772a8217543c5bf667f19c3d736691f6edca4",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/Luckyninja_"
+        }
+      ]
+    },
+    {
+      "id": "3a591b64-5959-4015-8e0c-f0590e98b818",
+      "createdAt": "2024-02-06T18:35:33.991Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x65401D5265DFf00b1CAFd3e14c871A5088900CcE",
+          "chain": "BINANCE",
+          "domain": null
+        },
+        {
+          "address": "0x65401d5265dff00b1cafd3e14c871a5088900cce",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": "CWRKMB6pkrRMAiEBGPU3xswbY9JRU4QcQ5id98smmBAH",
+          "chain": "SOL",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/LarissaInsogna"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "X-call.app"
+        }
+      ]
+    },
+    {
+      "id": "bb818bf9-ebaf-4f04-8cc8-89da407cd820",
+      "createdAt": "2024-02-05T20:31:30.990Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/launchpadlpx/status/1752648650017403057"
+        }
+      ]
+    },
+    {
+      "id": "ae230e05-ee65-479d-8d2b-1190b1f60ec9",
+      "createdAt": "2024-02-02T02:23:39.217Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "0x5EE55B47c1b944637926D6801A39d78a2091e1A4",
+          "chain": "AVALANCHE",
+          "domain": null
+        },
+        {
+          "address": "0x40665350bcF25f602aa21b6e98d590C9F6E5Fcf4",
+          "chain": "AVALANCHE",
+          "domain": null
+        },
+        {
+          "address": "0x3acC62529E387730476ad3C90630Db01c84b0FdF",
+          "chain": "AVALANCHE",
+          "domain": null
+        },
+        {
+          "address": "0x7a3BEa333246efcD74ebf5835987a5398Eac10fE",
+          "chain": "AVALANCHE",
+          "domain": null
+        },
+        {
+          "address": "0xE00320aaf077bd304441CbA46DabbA3e1Ac225f6",
+          "chain": "POLYGON",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/Lubomir_bnb/status/1751068569230520632?s=20"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/Lubomir_bnb"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://enter-vulcan.xyz/?id=eyJ1bml4IjoiMTcwNjU3MzUwNTM5MiIsIm1lbWJlciI6eyJ1c2VybmFtZSI6InNrZWxlbXVzaWMiLCJpZCI6Ijc5NTM5NTcwMjE1MDM5Nzk5MyJ9LCJzZXJ2ZXIiOnsibWVtYmVyIjoyOTU0LCJuYW1lIjoiQ29xVnNIdW50ZXLwn5CT8J%2BOryIsImljb24iOiJodHRwczovL2Nkbi5kaXNjb3JkYXBwLmNvbS9pY29ucy8xMTk0OTE2MTIwNjkyNTIzMDE5LzVjMjY0NjRmNzM3OTc1OWQ0YmNiNTNhNzc5NzIzMDg4LndlYnAiLCJpZCI6IjExOTQ5MTYxMjA2OTI1MjMwMTkifX0%3D"
+        }
+      ]
+    },
+    {
+      "id": "1ff6768c-e71a-464a-b494-d658cbdacfc8",
+      "createdAt": "2024-01-31T18:07:43.965Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "IMPERSONATION",
+      "addresses": [
+        {
+          "address": "0x3A856d4effa670C54585a5D523e96513e148e95d",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://defi-jup.space/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/capalino?lang=fr"
+        },
+        {
+          "address": "0x3A856d4effa670C54585a5D523e96513e148e95d",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://defi-jup.space/"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/capalino?lang=fr"
+        }
+      ]
+    },
+    {
+      "id": "7dd8473a-46e5-4e54-994a-d1fcad73f5ac",
+      "createdAt": "2024-01-31T05:49:51.779Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_RETURNS",
+      "addresses": [
+        {
+          "address": "1NsCabtobhCJzud8WXuVSQzHTo4tGiCRrt",
+          "chain": "BTC",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/messages/2940178199-1705357966264635392"
+        }
+      ]
+    },
+    {
+      "id": "febb1da7-1ef7-4c0c-a064-b75ed4385f00",
+      "createdAt": "2024-01-21T20:42:43.368Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x0000db5c8B030ae20308ac975898E09741e70000",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/BcfiLabs"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/oya_soylu1?s=20"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/BcfiLabs"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://x.com/oya_soylu1?s=20"
+        },
+        {
+          "address": "0x00002D98735603b0447B46c7807C385c29230000",
+          "chain": "ETH",
+          "domain": null
+        }
+      ]
+    },
+    {
+      "id": "294d956f-06a6-4a12-bab1-9f8b90e8d0a1",
+      "createdAt": "2024-01-19T16:48:13.887Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "FAKE_PROJECT",
+      "addresses": [
+        {
+          "address": "0xd1dbcd7d16fab489d0a809dd52d3cd9ec68f4247",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/undeadfund"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.co/DIIleUoZB1"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.undead.fund/#/"
+        },
+        {
+          "address": "0xd1dbcd7d16fab489d0a809dd52d3cd9ec68f4247",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/undeadfund"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://t.co/DIIleUoZB1"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://www.undead.fund/#/"
+        }
+      ]
+    },
+    {
+      "id": "271c79cc-208f-4922-8a3c-12c62e353687",
+      "createdAt": "2024-01-12T23:11:04.965Z",
+      "trusted": false,
+      "checked": null,
+      "scamCategory": "PHISHING",
+      "addresses": [
+        {
+          "address": "0x63605E53D422C4F1ac0e01390AC59aAf84C44A51",
+          "chain": "ETH",
+          "domain": null
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://twitter.com/mtroxynth"
+        },
+        {
+          "address": null,
+          "chain": null,
+          "domain": "https://metroxynh.com/"
+        }
+      ]
+    }
+  ]
+}
+
+{
+  "id": "acf8333c-89eb-4203-a671-a4c095e99a9e",
+  "createdAt": "2025-03-17T10:20:43.903Z",
+  "trusted": false,
+  "checked": null,
+  "scamCategory": "FAKE_RETURNS",
+  "addresses": [
+    {
+      "address": "bc1qdc9gnr2tqfm78lqhxunapaw605qhkpsq36ysr6",
+      "chain": "BTC",
+      "domain": null
+    }
