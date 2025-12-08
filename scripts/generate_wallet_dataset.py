@@ -39,6 +39,42 @@ RISK_ORDER = {
     "CRÍTICO": 3,
 }
 
+# Manual fixes for corrupted or truncated entries we detect in Data2.txt.
+MANUAL_ENTRIES = {
+    "bc1qdc9gnr2tqfm78lqhxunapaw605qhkpsq36ysr6": {
+        "networks": ["BTC"],
+        "risk_level": "MEDIO",
+        "risk_score": None,
+        "scam_categories": ["FAKE_RETURNS"],
+        "domains": [
+            "https://apps.apple.com/us/app/valr-bitcoin-exchange-wallet/id1453499428",
+            "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=195197f920a09b1b&attid=0.1&disp=attd&realattid=f_m7alavv10&safe=1&zw",
+            "https://mail.google.com/mail/u/0/?ui=2&ik=a8a34a6fff&view=att&th=19523b133a16ba5f&attid=0.1&disp=attd&realattid=f_m7df4kaj0&safe=1&zw",
+            "https://play.google.com/store/apps/details?id=com.valr.app",
+            "https://support.valr.com/",
+            "https://support.valr.com/hc/en-us/requests/new",
+            "https://twitter.com/valrdotcom",
+            "https://www.facebook.com/VALRdotcom/",
+            "https://www.instagram.com/valrdotcom/",
+            "https://www.linkedin.com/company/valr/",
+            "https://www.valr.com/mytransactionhistory",
+        ],
+        "sources": [
+            {
+                "source": "Chainabuse Reports (Recuperado Manual)",
+                "type": "COMMUNITY_REPORT",
+                "risk_level": "MEDIO",
+                "scam_category": "FAKE_RETURNS",
+                "detail": "Reporte acf8333c-89eb-4203-a671-a4c095e99a9e",
+                "createdAt": "2025-03-17T10:20:43.903Z",
+                "trusted": False,
+            }
+        ],
+        "first_seen": "2025-03-17T10:20:43.903Z",
+        "last_seen": "2025-03-17T10:20:43.903Z",
+    }
+}
+
 
 def normalize_risk_level(level: Optional[str]) -> Optional[str]:
     if not level:
@@ -337,6 +373,10 @@ def process_dataset(objects: List[Any]) -> Dict[str, Any]:
             "first_seen": first_seen,
             "last_seen": last_seen,
         }
+
+    for address, payload in MANUAL_ENTRIES.items():
+        if address not in final_wallets:
+            final_wallets[address] = payload
 
     dataset_info = {
         "description": metadata.get("description"),

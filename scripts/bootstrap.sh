@@ -30,7 +30,7 @@ if [[ "${1:-}" == "--docker" ]]; then
     exit 1
   fi
   log_info "Levantando stack docker (Ctrl+C para detener)"
-  docker compose -f docker/docker-compose.yml up --build
+  docker compose up --build
 fi
 
 log_info "Setup completado."

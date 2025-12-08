@@ -22,3 +22,7 @@ htmlcov/
 .DS_Store
 .vscode/
 .idea/
+
+# Frontend build artifacts
+frontend/node_modules/
+frontend/dist/

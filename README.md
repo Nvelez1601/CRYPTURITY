@@ -7,7 +7,8 @@ API construida con FastAPI para verificar wallets contra un dataset consolidado 
 - Arquitectura modular por componentes (controllers, repositories, services, use cases, routes).
 - Dataset JSON versionado bajo `app/repositories/data/` con script para regenerarlo.
 - Middleware de logging (nivel INFO) y configuración via `.env`.
-- Distribución lista para contenedores (Dockerfile y docker-compose).
+- Dashboard web responsivo en Vue 3 (Vite) con estética tipo Binance (negro/amarillo).
+- Distribución lista para contenedores (docker/api.Dockerfile, docker/frontend.Dockerfile y docker-compose).
 
 ## Estructura del proyecto
 ```
@@ -29,8 +30,18 @@ scripts/
   generate_wallet_dataset.py  # Reconstruye el dataset desde Data2.txt
   test_wallet_flow.py         # Prueba de flujo con wallets de muestra
 docker/
-  Dockerfile
-  docker-compose.yml
+  api.Dockerfile
+  frontend.Dockerfile
+frontend/
+  package.json
+  tsconfig.json
+  vite.config.ts
+  src/
+    components/
+    services/
+    store/
+    views/
+docker-compose.yml
 README.md
 .env / .env.example
 pyproject.toml
@@ -65,12 +76,20 @@ poetry install
 uvicorn app.main:app --host 0.0.0.0 --port 8000
 ```
 
+## Frontend (Vue 3 + Vite)
+```bash
+cd frontend
+npm install
+npm run dev
+```
+El dashboard queda disponible en `http://localhost:5173` y consume la API vía las variables `VITE_API_BASE_URL` y `VITE_API_PREFIX`.
+
 ## Docker
 ### Build & run
 ```bash
-docker compose -f docker/docker-compose.yml up --build
+docker compose up --build
 ```
-La API queda disponible en `http://localhost:8000`.
+La API queda disponible en `http://localhost:8000` y el dashboard en `http://localhost:5173`.
 
 ### Variables de entorno
 Configura `.env` (o provee variables en el hosting) con al menos:
@@ -79,6 +98,8 @@ APP_NAME="Crypturity Wallet Risk API"
 API_PREFIX="/api/v1"
 DATASET_PATH="app/repositories/data/wallet_risk_dataset.json"
 LOG_LEVEL="INFO"
+VITE_API_BASE_URL="http://localhost:8000"
+VITE_API_PREFIX="/api/v1"
 ```
 
 ## API
