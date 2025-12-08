@@ -1,0 +1,1 @@
+"""Use cases for wallet checker."""

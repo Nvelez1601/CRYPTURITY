@@ -1,0 +1,1 @@
+"""Base abstractions for repositories and shared behaviours."""
