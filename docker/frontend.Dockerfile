@@ -1,13 +1,17 @@
 # syntax=docker/dockerfile:1
 FROM node:20-alpine AS build
 
+ARG FRONTEND_PATH=.
+
 WORKDIR /app
 
-COPY package.json ./
+# Copy dependency manifest and install in a clean layer so caches survive
+COPY ${FRONTEND_PATH}/package.json ./
 RUN npm install
 
-COPY tsconfig.json tsconfig.node.json vite.config.ts index.html ./
-COPY src ./src
+# Bring over the rest of the build inputs from the configured source tree
+COPY ${FRONTEND_PATH}/tsconfig.json ${FRONTEND_PATH}/tsconfig.node.json ${FRONTEND_PATH}/vite.config.ts ${FRONTEND_PATH}/index.html ./
+COPY ${FRONTEND_PATH}/src ./src
 
 ARG VITE_API_BASE_URL
 ARG VITE_API_PREFIX=/api/v1

@@ -9,7 +9,7 @@
         :level="summary.risk_level ?? 'DESCONOCIDO'"
       />
         <div class="summary__networks">
-          <span>Redes detectadas</span>
+          <span>Red detectada</span>
           <strong>{{ networksLabel }}</strong>
         </div>
       </div>
