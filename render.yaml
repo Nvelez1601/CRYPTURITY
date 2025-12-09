@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: crypturity-api
+    env: docker
+    region: oregon
+    plan: free
+    autoDeploy: true
+    healthCheckPath: /
+    dockerContext: .
+    dockerfilePath: docker/api.Dockerfile
+    envVars:
+      - key: APP_NAME
+        value: Crypturity Wallet Risk API
+      - key: API_PREFIX
+        value: /api/v1
+      - key: DATASET_PATH
+        value: app/repositories/data/wallet_risk_dataset.json
+      - key: LOG_LEVEL
+        value: INFO
+
+  - type: static
+    name: crypturity-dashboard
+    env: static
+    region: oregon
+    plan: free
+    autoDeploy: true
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value: https://crypturity-api.onrender.com
+      - key: VITE_API_PREFIX
+        value: /api/v1

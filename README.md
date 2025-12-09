@@ -41,6 +41,7 @@ frontend/
     services/
     store/
     views/
+render.yaml
 docker-compose.yml
 README.md
 .env / .env.example
@@ -101,6 +102,27 @@ LOG_LEVEL="INFO"
 VITE_API_BASE_URL="http://localhost:8000"
 VITE_API_PREFIX="/api/v1"
 ```
+
+## Despliegue en Render (free tier)
+Puedes reutilizar el blueprint incluido en `render.yaml` para aprovisionar dos servicios:
+
+1. **API (FastAPI)** → Servicio web Docker.
+  - Usa `docker/api.Dockerfile` como imagen.
+  - Render expone la API en `https://crypturity-api.onrender.com` (ajusta el nombre si se encuentra ocupado).
+2. **Frontend (Vue/Vite)** → Sitio estático.
+  - Construye desde `frontend/` con `npm install && npm run build` y publica la carpeta `dist`.
+  - Configura las variables `VITE_API_BASE_URL` y `VITE_API_PREFIX` apuntando a la URL pública de la API.
+
+Pasos rápidos:
+```bash
+render blueprint deploy render.yaml
+```
+O bien crea los servicios manualmente desde el panel de Render importando el repositorio y aplicando las variables anteriores.
+
+**Notas**
+- El plan gratuito “duerme” tras unos minutos sin tráfico (primer request tarda unos segundos).
+- Si cambias el nombre del servicio backend, actualiza `VITE_API_BASE_URL` en Render y/o en `render.yaml`.
+- El frontend también intentará usar `window.location.origin` si no encuentra `VITE_API_BASE_URL`, lo que permite servir ambos desde el mismo dominio en otros proveedores.
 
 ## API
 - `POST /api/v1/wallets/verify`
