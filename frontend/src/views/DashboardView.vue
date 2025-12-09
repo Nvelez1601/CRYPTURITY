@@ -9,6 +9,7 @@
           v-if="summary"
           :summary="summary"
           :address="currentAddress"
+          :metadata="metadata"
         />
         <template v-else>
           <div v-if="errorMessage" class="dashboard__error">{{ errorMessage }}</div>

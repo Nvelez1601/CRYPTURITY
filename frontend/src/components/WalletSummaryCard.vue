@@ -3,11 +3,16 @@
     <header class="summary__header">
       <span class="summary__label">Resultado</span>
       <h2>{{ address }}</h2>
-      <RiskIndicator
+      <div class="summary__indicator-row">
+        <RiskIndicator
         :score="summary.risk_score_numeric ?? summary.risk_level_numeric"
         :level="summary.risk_level ?? 'DESCONOCIDO'"
       />
-      <p class="summary__networks">Redes detectadas: {{ networksLabel }}</p>
+        <div class="summary__networks">
+          <span>Redes detectadas</span>
+          <strong>{{ networksLabel }}</strong>
+        </div>
+      </div>
     </header>
 
     <dl class="summary__facts">
@@ -45,9 +50,13 @@
     </section>
 
     <footer class="summary__footer">
-      <div class="summary__score">
-        <span>Score TRM normalizado</span>
-        <strong>{{ displayScore }}</strong>
+      <div class="summary__metadata" v-if="metadata">
+        <span>Dataset</span>
+        <strong>{{ metadata.version }} · {{ metadata.records }} registros</strong>
+      </div>
+      <div class="summary__score" v-else>
+        <span>Última actualización</span>
+        <strong>{{ summary.last_seen ?? 'N/D' }}</strong>
       </div>
     </footer>
   </section>
@@ -56,20 +65,15 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import RiskIndicator from '@/components/RiskIndicator.vue';
-import type { WalletSummary } from '@/types/wallet';
+import type { WalletMetadata, WalletSummary } from '@/types/wallet';
 
 const props = defineProps<{
   summary: WalletSummary;
   address: string;
+  metadata?: WalletMetadata | null;
 }>();
 
 const networksLabel = computed(() => props.summary.networks.join(' · '));
-const displayScore = computed(() => {
-  if (props.summary.risk_score_numeric == null) {
-    return 'N/D';
-  }
-  return props.summary.risk_score_numeric.toString();
-});
 </script>
 
 <style scoped>
@@ -92,10 +96,27 @@ const displayScore = computed(() => {
   word-break: break-all;
 }
 
-.summary__networks {
-  margin: 0.65rem 0 0;
+.summary__indicator-row {
+  margin-top: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.summary__networks span {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   color: var(--color-text-muted);
-  font-size: 0.85rem;
+}
+
+.summary__networks strong {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 1.25rem;
+  color: var(--color-accent);
 }
 
 .summary__facts {
@@ -152,6 +173,7 @@ const displayScore = computed(() => {
   flex-wrap: wrap;
 }
 
+.summary__metadata span,
 .summary__score span {
   display: block;
   font-size: 0.75rem;
@@ -160,9 +182,10 @@ const displayScore = computed(() => {
   letter-spacing: 0.08em;
 }
 
+.summary__metadata strong,
 .summary__score strong {
-  font-size: 2.3rem;
+  font-size: 1.25rem;
   color: var(--color-accent);
-  line-height: 1;
+  line-height: 1.2;
 }
 </style>

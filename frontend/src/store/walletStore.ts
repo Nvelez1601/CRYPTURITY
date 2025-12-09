@@ -29,7 +29,8 @@ export const useWalletStore = defineStore('wallet', () => {
 
       if (!found || !summaryData) {
         summary.value = null;
-        errorMessage.value = 'Wallet no encontrada en el dataset.';
+        errorMessage.value =
+          'No encontramos señales de riesgo para esta wallet en nuestro dataset.';
         return;
       }
 
